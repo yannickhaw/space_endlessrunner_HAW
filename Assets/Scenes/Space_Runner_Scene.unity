@@ -1051,7 +1051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638ba6c2141a46d44920810bfba1f57d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LRmovementSpeed: 5
+  LRmovementSpeed: 3
   VHmovementSpeed: 0
   jumpForce: 5.5
   groundCheck: {fileID: 1906505319}
