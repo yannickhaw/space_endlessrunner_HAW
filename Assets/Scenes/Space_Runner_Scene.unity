@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 50207856}
   - component: {fileID: 50207857}
   - component: {fileID: 50207855}
+  - component: {fileID: 50207858}
   m_Layer: 0
   m_Name: Terrain_0_0_c047343f-7e70-4206-9599-9ceb906cd155
   m_TagString: Untagged
@@ -228,6 +229,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34458a4fd1888554fb28f2b93f15cc2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &50207858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50207853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fccaf3f68543313469c72c7a5bbcfdee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObject: {fileID: 0}
 --- !u!1 &238927542
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,7 +899,7 @@ GameObject:
   - component: {fileID: 1009208940}
   - component: {fileID: 1009208939}
   - component: {fileID: 1009208938}
-  - component: {fileID: 1009208937}
+  - component: {fileID: 1009208944}
   - component: {fileID: 1009208943}
   m_Layer: 0
   m_Name: Player
@@ -894,25 +908,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1009208937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009208936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e438942580a90f42a9c702ec860d7f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 6
-  jumpForce: 5.5
-  groundCheck: {fileID: 1906505319}
-  ground:
-    serializedVersion: 2
-    m_Bits: 64
-  playerObject: {fileID: 2021278556}
 --- !u!54 &1009208938
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1043,6 +1038,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fccaf3f68543313469c72c7a5bbcfdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObject: {fileID: 2021278556}
+--- !u!114 &1009208944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009208936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638ba6c2141a46d44920810bfba1f57d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LRmovementSpeed: 5
+  VHmovementSpeed: 0
+  jumpForce: 5.5
+  groundCheck: {fileID: 1906505319}
+  ground:
+    serializedVersion: 2
+    m_Bits: 64
   playerObject: {fileID: 2021278556}
 --- !u!1001 &1252250489
 PrefabInstance:
