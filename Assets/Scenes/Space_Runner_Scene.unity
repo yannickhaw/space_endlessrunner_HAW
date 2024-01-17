@@ -423,6 +423,10 @@ MonoBehaviour:
   StartSection: {fileID: 1271097991817546194, guid: e1a9003ac657c624ea5be7102eb1a896, type: 3}
   WorldSections:
   - {fileID: 1271097991817546194, guid: 0260e7bb91b9eae499f2aa7f7284f42a, type: 3}
+  - {fileID: 1271097991817546194, guid: a93c5c8e6e86d84428b7c9ec3638bf6c, type: 3}
+  - {fileID: 1271097991817546194, guid: 7040d9aa2d434674b9b60ec1994da16f, type: 3}
+  - {fileID: 1271097991817546194, guid: 62e18c8fd9b95d34791c3d36018c9112, type: 3}
+  - {fileID: 1271097991817546194, guid: 5d0fc6cacb3605f47afef24e5b3d08b1, type: 3}
   StartPlayerspeed: 5
   CollisionIndex: 0
 --- !u!1 &559631183
