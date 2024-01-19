@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin_v1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5c804a373600c4c13bde0795d6431350, type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -8700617353114198275, guid: 5c804a373600c4c13bde0795d6431350, type: 3}
@@ -76,5 +80,50 @@ PrefabInstance:
     - {fileID: -6733177361254619370, guid: 5c804a373600c4c13bde0795d6431350, type: 3}
     - {fileID: -8380157826906577798, guid: 5c804a373600c4c13bde0795d6431350, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5c804a373600c4c13bde0795d6431350, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1712103211167614796}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5c804a373600c4c13bde0795d6431350, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3956465086620891325}
   m_SourcePrefab: {fileID: 100100000, guid: 5c804a373600c4c13bde0795d6431350, type: 3}
+--- !u!1 &1935762922934031829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5c804a373600c4c13bde0795d6431350, type: 3}
+  m_PrefabInstance: {fileID: 1593253709416491140}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1712103211167614796
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935762922934031829}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.4238043, y: 2.3526614, z: 2.4662325}
+  m_Center: {x: 0.010234588, y: 0.0026919341, z: -0.010978234}
+--- !u!114 &3956465086620891325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935762922934031829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881024e437c3b419e943b9fe4ddb7988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 360
