@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.43137258, g: 0.41176474, b: 0.454902, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.02
@@ -241,6 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fccaf3f68543313469c72c7a5bbcfdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backMovement: -7
+  isDead: 0
   playerObject: {fileID: 0}
 --- !u!1 &238927542
 GameObject:
@@ -1424,6 +1426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fccaf3f68543313469c72c7a5bbcfdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backMovement: -5
+  isDead: 0
   playerObject: {fileID: 2021278556}
 --- !u!114 &1009208944
 MonoBehaviour:

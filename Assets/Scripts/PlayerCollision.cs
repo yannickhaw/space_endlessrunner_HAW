@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour
 {
+    Rigidbody ribo;
+    public float backMovement = -5;
+
+    public bool isDead = false;
     public GameObject playerObject;
     private LevelGenerator levelGenerator;
 
@@ -12,6 +16,7 @@ public class PlayerCollision : MonoBehaviour
     {
         // Assuming PlayerDeath script is on the same GameObject as LevelGenerator script
         //levelGenerator = GetComponent<LevelGenerator>();
+        ribo = GetComponent<Rigidbody>();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -22,9 +27,11 @@ public class PlayerCollision : MonoBehaviour
             playerObject.GetComponent<Animator>().Play("Stumble Backwards");
             //Destroy(gameObject);
             
+            //ribo.velocity = new Vector3(0, 0, -5);
+            isDead = true;
             Debug.Log("You Die");
                         
-            StartCoroutine(ReloadLevelWithDelay(1.5f));         // Start the ReloadLevel coroutine with a delay
+            StartCoroutine(ReloadLevelWithDelay(4.5f));         // Start the ReloadLevel coroutine with a delay
 
             //ReloadLevel();          //Ruft die ReloadLevel Funktion auf und führt sie nach 1,5 Sekunden aus (Delay um Neustart zu verlängern)
             
@@ -33,6 +40,19 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (isDead)
+        {
+            transform.Translate(Vector3.forward * backMovement * Time.deltaTime);
+            transform.Translate(Vector3.up * 0 * Time.deltaTime);           //funktioniert nicht aber so ähnlich
+            transform.Translate(Vector3.right * 0 * Time.deltaTime);
+           //ribo.velocity = new Vector3(0, 0, backMovement);
+            //make a function to stick to platform
+        }
+        
+
+    }
     IEnumerator ReloadLevelWithDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
