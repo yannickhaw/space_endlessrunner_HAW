@@ -12,6 +12,7 @@ public class CoinCollector : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Coin"))
         {
+            FindObjectOfType<SoundManager>().PlaySound("CoinSFX");
             Destroy(other.gameObject);
             coincount++;
             coinscoreUI.text = "Coins: " + coincount;
