@@ -39,18 +39,18 @@ public class PlayerMovement_v2 : MonoBehaviour
 
        // rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, VHmovementSpeed);
         
-        if(Input.GetKey("left"))
+        if(Input.GetKey("left") && PlayerManager.gameOver == false)
         {
             GoLeft();
         }
 
-        if(Input.GetKey("right"))
+        if(Input.GetKey("right") && PlayerManager.gameOver == false)
         {
             GoRight();
         }
 
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && IsGrounded() && PlayerManager.gameOver == false)
         {
             Jump();
         }

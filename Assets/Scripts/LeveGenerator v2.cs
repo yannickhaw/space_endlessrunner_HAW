@@ -14,18 +14,18 @@ public class LevelGenerator : MonoBehaviour
 
     private float Index = 0;
     
-    public float CollisionIndex = 0;
+    public static bool CollisionIndex;
         
     public void OnPlayerDeath()
     {
         //GetComponent<PlayerCollision>().SetPlayerDied();
         Debug.Log("cololololllission");
-        CollisionIndex = 1;
+        CollisionIndex = true;
     }
 
     private void Start()
     {
-        
+        //PlayerManager.gameOver = true;
      /* GameObject StartPlane1 = Instantiate(StartSection, transform);
         StartPlane1.transform.position = new Vector3(0, 0, 31);
         GameObject StartPlane2 = Instantiate(StartSection, transform);
@@ -56,7 +56,7 @@ public class LevelGenerator : MonoBehaviour
     {
             // Bewege das GameObject nach hinten
 
-        if(CollisionIndex == 0)
+        if(PlayerManager.gameOver == false)
         {
 
             gameObject.transform.position += new Vector3(0, 0, -StartPlayerspeed * Time.deltaTime);

@@ -29,10 +29,11 @@ public class PlayerCollision : MonoBehaviour
             //Destroy(gameObject);
             
             //ribo.velocity = new Vector3(0, 0, -5);
+            PlayerManager.gameOver = true;
             isDead = true;
             //Debug.Log("You Die");
                         
-            StartCoroutine(ReloadLevelWithDelay(4.0f));         // Start the ReloadLevel coroutine with a delay
+            StartCoroutine(ReloadLevelWithDelay(2.0f));         // Start the ReloadLevel coroutine with a delay
 
             //ReloadLevel();          //Ruft die ReloadLevel Funktion auf und führt sie nach 1,5 Sekunden aus (Delay um Neustart zu verlängern)
             
@@ -45,7 +46,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (isDead)
         {
-            transform.Translate(Vector3.forward * backMovement * Time.deltaTime);
+            //transform.Translate(Vector3.forward * backMovement * Time.deltaTime);
             transform.Translate(Vector3.up * 0 * Time.deltaTime);           //funktioniert nicht aber so ähnlich
             transform.Translate(Vector3.right * 0 * Time.deltaTime);
            //ribo.velocity = new Vector3(0, 0, backMovement);
@@ -58,7 +59,9 @@ public class PlayerCollision : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
+
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);     //Lädt das Level von vorne
     }
 

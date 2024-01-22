@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (gameOver)
         {
-            Time.timeScale = 0;
+            Time.timeScale = 1;
             gameOverPanel.SetActive(true);
         }
     }

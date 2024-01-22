@@ -13,7 +13,11 @@ public class PlatformMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(0, 0, -5) * Time.deltaTime;
+        if (PlayerManager.gameOver == false)
+        {
+            transform.position += new Vector3(0, 0, -5) * Time.deltaTime;
+        }
+        
     }
 
 
