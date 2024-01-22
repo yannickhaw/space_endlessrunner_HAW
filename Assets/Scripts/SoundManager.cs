@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour
             s.audioSource.volume = s.volume;
         }
         
+        PlaySound("StartExplosionSFX");
         PlaySound("MainThemeMusic");
     }
 
@@ -24,7 +25,7 @@ public class SoundManager : MonoBehaviour
     {
         if (PlayerManager.gameOver == true)
         {
-           StopSound("MainThemeMusic");
+            StopSound("MainThemeMusic");
         }
 
 
