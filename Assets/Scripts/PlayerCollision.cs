@@ -24,15 +24,15 @@ public class PlayerCollision : MonoBehaviour
         if(other.gameObject.CompareTag("EnemyObstacle"))
         {
             
-            FindObjectOfType<SoundManager>().PlaySound("DeathSound");
             playerObject.GetComponent<Animator>().Play("Stumble Backwards");
+            FindObjectOfType<SoundManager>().PlaySound("DeathSound");
             //Destroy(gameObject);
             
             //ribo.velocity = new Vector3(0, 0, -5);
             isDead = true;
-            Debug.Log("You Die");
+            //Debug.Log("You Die");
                         
-            StartCoroutine(ReloadLevelWithDelay(4.5f));         // Start the ReloadLevel coroutine with a delay
+            StartCoroutine(ReloadLevelWithDelay(4.0f));         // Start the ReloadLevel coroutine with a delay
 
             //ReloadLevel();          //Ruft die ReloadLevel Funktion auf und führt sie nach 1,5 Sekunden aus (Delay um Neustart zu verlängern)
             
