@@ -439,7 +439,7 @@ RectTransform:
   m_GameObject: {fileID: 284007701}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7867, y: 1.7095, z: 1}
+  m_LocalScale: {x: 2.639492, y: 2.5254443, z: 1.4773}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 733811412}
@@ -532,6 +532,7 @@ MonoBehaviour:
   WorldSections:
   - {fileID: 1271097991817546194, guid: e1a9003ac657c624ea5be7102eb1a896, type: 3}
   - {fileID: 1271097991817546194, guid: bb40b78325f700f45b6ec89e19a071e0, type: 3}
+  - {fileID: 1271097991817546194, guid: bcf45f6a56aad4122b6945ddcfa025aa, type: 3}
   StartPlayerspeed: 5
 --- !u!1 &341373394
 GameObject:
@@ -653,7 +654,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -134.04199, w: -41.16028}
+  m_margin: {x: -302.02945, y: 0, z: -454.81714, w: -41.16028}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -707,7 +708,7 @@ GameObject:
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &510985188
 Transform:
   m_ObjectHideFlags: 0
@@ -914,7 +915,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -134.04199, w: -41.16028}
+  m_margin: {x: -302.32526, y: 0, z: -457.54745, w: -41.16028}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -941,6 +942,7 @@ GameObject:
   - component: {fileID: 559631186}
   - component: {fileID: 559631185}
   - component: {fileID: 559631184}
+  - component: {fileID: 559631189}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1047,6 +1049,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &559631189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559631183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e47f34f66e1a014faa152861a226804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreUI: {fileID: 341373396}
+  scorePerSecond: 10
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,6 +2324,7 @@ GameObject:
   - component: {fileID: 1009208944}
   - component: {fileID: 1009208943}
   - component: {fileID: 1009208945}
+  - component: {fileID: 1009208946}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2481,6 +2498,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinscoreUI: {fileID: 1291669864}
+--- !u!114 &1009208946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009208936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385f53c5639f42244a23e7e734eb889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinscoreUI: {fileID: 538277894}
 --- !u!1 &1201794358
 GameObject:
   m_ObjectHideFlags: 0

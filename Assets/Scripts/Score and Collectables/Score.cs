@@ -7,7 +7,7 @@ public class Score : MonoBehaviour
   //  public Text scoreText;                          // Hier fügst du das Text-Objekt hinzu, das deinen Punktestand anzeigt
     public TextMeshProUGUI scoreUI;
 
-    public float scorePerSecond = 10f;              // Punktestand pro Sekunde
+    public float scorePerSecond = 10f;                // Punktestand pro Sekunde
     private float currentScore = 0f;
 
     void Update()
@@ -17,6 +17,7 @@ public class Score : MonoBehaviour
         if (PlayerManager.gameOver == false)
         {
             currentScore += scorePerSecond * Time.deltaTime;
+
         }
         
         //scoreUI.text += scorePerSecond * Time.deltaTime;
@@ -29,5 +30,6 @@ public class Score : MonoBehaviour
         // Zeige den Punktestand im Text-Objekt an
         
         scoreUI.text = "Score: " + Mathf.Round(currentScore).ToString();
+
     }
 }
