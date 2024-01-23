@@ -32,10 +32,10 @@ public class LevelGenerator : MonoBehaviour
         StartPlane2.transform.position = new Vector3(0, 0, 21);
      */  GameObject StartPlane1 = Instantiate(StartSection, transform);      // Instanziierung und Positionierung von 3 StartTiles
         StartPlane1.transform.position = new Vector3(0, 0, -5);
-        GameObject StartPlane2 = Instantiate(StartSection, transform);
-        StartPlane2.transform.position = new Vector3(0, 0, 5);
-        GameObject StartPlane3 = Instantiate(StartSection, transform);
-        StartPlane3.transform.position = new Vector3(0, 0, 15);
+        //GameObject StartPlane2 = Instantiate(StartSection, transform);
+        //StartPlane2.transform.position = new Vector3(0, 0, 5);
+        //GameObject StartPlane3 = Instantiate(StartSection, transform);
+        //StartPlane3.transform.position = new Vector3(0, 0, 15);
     
         int RandomInt1 = Random.Range(0, WorldSections.Length);                         // Generiere zufällig ein Tile1 oder Tile2 für den zweiten Abschnitt
 
