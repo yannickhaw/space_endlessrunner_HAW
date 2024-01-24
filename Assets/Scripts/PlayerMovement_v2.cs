@@ -127,17 +127,18 @@ public class PlayerMovement_v2 : MonoBehaviour
 
        // rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, VHmovementSpeed);
         
-        if(Input.GetKey("left") || isMovingLeft)
+        if((Input.GetKey("left") || isMovingLeft) && GameOverManager.gameOver == false)
         {
+            Debug.Log("Moving Left");
             GoLeft();
         }
 
-        if(Input.GetKey("right") || isMovingRight)
+        if((Input.GetKey("right") || isMovingRight) && GameOverManager.gameOver == false)
         {
             GoRight();
         }
 
-        if ((Input.GetButtonDown("Jump") || isJumping) && IsGrounded())
+        if (((Input.GetButtonDown("Jump") || isJumping) && IsGrounded()) && GameOverManager.gameOver == false)
         {
             Jump();
         }
@@ -169,6 +170,7 @@ public class PlayerMovement_v2 : MonoBehaviour
     }
     void Jump()
     {
+        FindObjectOfType<SoundManager>().PlaySound("JumpSFX");
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
         playerObject.GetComponent<Animator>().Play("Jump");
     }

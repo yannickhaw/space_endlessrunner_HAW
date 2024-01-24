@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.616529, g: 0.61102706, b: 0.6509434, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.03
@@ -2325,6 +2325,7 @@ GameObject:
   - component: {fileID: 1009208940}
   - component: {fileID: 1009208939}
   - component: {fileID: 1009208938}
+  - component: {fileID: 1009208947}
   - component: {fileID: 1009208944}
   - component: {fileID: 1009208943}
   - component: {fileID: 1009208945}
@@ -2481,12 +2482,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638ba6c2141a46d44920810bfba1f57d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   LRmovementSpeed: 3
   VHmovementSpeed: 0
   jumpForce: 5.5
   groundCheck: {fileID: 1906505319}
   ground:
-    serializedVersion: 2
     m_Bits: 64
   playerObject: {fileID: 2021278556}
 --- !u!114 &1009208945
@@ -2515,6 +2516,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinscoreUI: {fileID: 538277894}
+--- !u!114 &1009208947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009208936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c565e625defff14b9c5e53868b2f922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LRmovementSpeed: 4
+  VHmovementSpeed: 0
+  jumpForce: 5.5
+  groundCheck: {fileID: 1906505319}
+  ground:
+    serializedVersion: 2
+    m_Bits: 64
+  playerObject: {fileID: 2021278556}
+  JumpThreshold: 0.015
 --- !u!1 &1201794358
 GameObject:
   m_ObjectHideFlags: 0
@@ -3402,7 +3424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1906505319}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
