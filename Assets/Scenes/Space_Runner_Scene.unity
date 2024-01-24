@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
-  m_FogColor: {r: 0.43137258, g: 0.41176474, b: 0.454902, a: 1}
+  m_Fog: 0
+  m_FogColor: {r: 0.616529, g: 0.61102706, b: 0.6509434, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.03
   m_LinearFogStart: 0
@@ -708,7 +708,7 @@ GameObject:
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &510985188
 Transform:
   m_ObjectHideFlags: 0
@@ -719,7 +719,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.3, y: 4.1019125, z: 5.0036316}
-  m_LocalScale: {x: 0.52011997, y: 9.1192, z: 10.45901}
+  m_LocalScale: {x: 0.52011997, y: 9.1192, z: 70}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 735110871}
@@ -1168,7 +1168,7 @@ GameObject:
   - component: {fileID: 732508950}
   - component: {fileID: 732508951}
   m_Layer: 0
-  m_Name: PlayerManager
+  m_Name: GameOverManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1202,6 +1202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 733811411}
+  ScoreText: {fileID: 238927542}
+  CoinText: {fileID: 1291669863}
 --- !u!1 &733811411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2894,7 +2896,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.3, y: 4.1019125, z: 5.0036316}
-  m_LocalScale: {x: 0.52011997, y: 9.1192, z: 10.45901}
+  m_LocalScale: {x: 0.52011997, y: 9.1192, z: 70}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 735110871}
@@ -3695,7 +3697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2001840345
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public class PlayerCollision : MonoBehaviour
             //Destroy(gameObject);
             
             //ribo.velocity = new Vector3(0, 0, -5);
-            PlayerManager.gameOver = true;
+            GameOverManager.gameOver = true;
             isDead = true;
             //Debug.Log("You Die");
                         

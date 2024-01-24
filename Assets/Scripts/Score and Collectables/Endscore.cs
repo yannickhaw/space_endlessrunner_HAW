@@ -14,7 +14,7 @@ public class Endscore : MonoBehaviour
     {
         // Erhöhe den Punktestand basierend auf der Zeit und der vorgegebenen Punkte pro Sekunde
         //scoreUI.text = scoreText.ToString();
-        if (PlayerManager.gameOver == false)
+        if (GameOverManager.gameOver == false)
         {
             currentEndScore += scorePerSecond * Time.deltaTime;
 

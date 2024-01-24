@@ -23,7 +23,7 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerManager.gameOver == true)
+        if (GameOverManager.gameOver == true)
         {
             StopSound("MainThemeMusic");
         }

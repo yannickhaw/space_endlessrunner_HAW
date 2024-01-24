@@ -56,7 +56,7 @@ public class LevelGenerator : MonoBehaviour
     {
             // Bewege das GameObject nach hinten
 
-        if(PlayerManager.gameOver == false)
+        if(GameOverManager.gameOver == false)
         {
 
             gameObject.transform.position += new Vector3(0, 0, -StartPlayerspeed * Time.deltaTime);

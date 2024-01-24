@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class GameOverManager : MonoBehaviour
 {
     public static bool gameOver;
     public GameObject gameOverPanel;
+
+    public GameObject ScoreText;
+    public GameObject CoinText;
+    
     
     
     // Start is called before the first frame update
@@ -21,6 +25,8 @@ public class PlayerManager : MonoBehaviour
         {
             Time.timeScale = 1;
             gameOverPanel.SetActive(true);
+            CoinText.SetActive(false);
+            ScoreText.SetActive(false);
         }
     }
 }

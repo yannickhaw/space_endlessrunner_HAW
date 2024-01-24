@@ -14,7 +14,7 @@ public class Score : MonoBehaviour
     {
         // Erhöhe den Punktestand basierend auf der Zeit und der vorgegebenen Punkte pro Sekunde
         //scoreUI.text = scoreText.ToString();
-        if (PlayerManager.gameOver == false)
+        if (GameOverManager.gameOver == false)
         {
             currentScore += scorePerSecond * Time.deltaTime;
 
@@ -27,9 +27,6 @@ public class Score : MonoBehaviour
 
     void UpdateScoreText()
     {
-        // Zeige den Punktestand im Text-Objekt an
-        
         scoreUI.text = "Score: " + Mathf.Round(currentScore).ToString();
-
     }
 }

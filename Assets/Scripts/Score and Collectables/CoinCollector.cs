@@ -16,7 +16,7 @@ public class CoinCollector : MonoBehaviour
             Destroy(other.gameObject);
             coincount++;
             coinscoreUI.text = "Coins: " + coincount;
-
+            
         }
     }
 }
