@@ -143,6 +143,13 @@ public class PlayerMovement_v2 : MonoBehaviour
             Jump();
         }
 
+        if (((Input.GetKey("down") || isDucking) && IsGrounded()) && GameOverManager.gameOver == false)
+        {
+            Slide();
+        }
+
+
+
     }
     
     void GoLeft()
@@ -172,8 +179,19 @@ public class PlayerMovement_v2 : MonoBehaviour
     {
         FindObjectOfType<SoundManager>().PlaySound("JumpSFX");
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-        playerObject.GetComponent<Animator>().Play("Jump");
+        //playerObject.GetComponent<Animator>().Play("Jump");
+        playerObject.GetComponent<Animator>().Play("Jump_start");
     }
+    
+
+    void Slide()
+    {
+        //FindObjectOfType<SoundManager>().PlaySound("JumpSFX");
+        //rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+        //playerObject.GetComponent<Animator>().Play("Jump");
+        playerObject.GetComponent<Animator>().Play("Flip");
+    }
+
 
 
     bool IsGrounded()

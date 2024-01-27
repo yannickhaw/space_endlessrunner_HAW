@@ -24,7 +24,9 @@ public class PlayerCollision : MonoBehaviour
         if(other.gameObject.CompareTag("EnemyObstacle"))
         {
             
-            playerObject.GetComponent<Animator>().Play("Stumble Backwards");
+            //playerObject.GetComponent<Animator>().Play("Stumble Backwards");
+            playerObject.GetComponent<Animator>().Play("Suprise");
+
             FindObjectOfType<SoundManager>().PlaySound("DeathSound");
             //Destroy(gameObject);
             
