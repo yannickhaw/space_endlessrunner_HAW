@@ -3736,13 +3736,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 64702207227730414, guid: cd24e2db351b23d4394bf6b5203c87a9, type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114888778176745957, guid: cd24e2db351b23d4394bf6b5203c87a9, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5114888778176745957, guid: cd24e2db351b23d4394bf6b5203c87a9, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5114888778176745957, guid: cd24e2db351b23d4394bf6b5203c87a9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
