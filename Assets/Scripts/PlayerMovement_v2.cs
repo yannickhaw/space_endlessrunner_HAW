@@ -19,7 +19,13 @@ public class PlayerMovement_v2 : MonoBehaviour
     [SerializeField]
     public GameObject playerObject;
 
-    private float playerXcoordinate = 0; //In Game X-Koordinate auf die die Kinect coordinate gemappt wird
+    private CapsuleCollider capsuleCollider;        // Reference to the Capsule Collider component
+    
+    // Original values of the Capsule Collider properties
+    private Vector3 originalCenter;
+    private float originalHeight;
+
+    //private float playerXcoordinate = 0; //In Game X-Koordinate auf die die Kinect coordinate gemappt wird
     private KinectSensor _sensor;
     private BodyFrameReader _reader;
     private Body[] _Data;
@@ -52,6 +58,20 @@ public class PlayerMovement_v2 : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        capsuleCollider = GetComponent<CapsuleCollider>();
+
+        if (capsuleCollider != null)
+        {
+            // Store the original capsuleCollider values
+            originalCenter = capsuleCollider.center;
+            originalHeight = capsuleCollider.height;
+        }
+        else
+        {
+            Debug.LogError("Capsule Collider component not found on the player GameObject.");
+        }
+
 
         _sensor = KinectSensor.GetDefault();
 
@@ -156,12 +176,12 @@ public class PlayerMovement_v2 : MonoBehaviour
             GoRight();
         }
 
-        if (((Input.GetButtonDown("Jump") || isJumping) && IsGrounded()) && GameOverManager.gameOver == false)
+        if ((Input.GetButtonDown("Jump") || isJumping) && IsGrounded() && GameOverManager.gameOver == false)
         {
             Jump();
         }
 
-        if (((Input.GetKey("down") || isDucking) && IsGrounded()) && GameOverManager.gameOver == false)
+        if ((Input.GetKey("down") || isDucking) && IsGrounded() && GameOverManager.gameOver == false)
         {
             Slide();
         }
@@ -199,6 +219,17 @@ public class PlayerMovement_v2 : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
         //playerObject.GetComponent<Animator>().Play("Jump");
         playerObject.GetComponent<Animator>().Play("Jump_start");
+
+        if (capsuleCollider != null)
+        {
+            // Set the new height and center
+            capsuleCollider.height = originalHeight;        //new height
+            capsuleCollider.center = new Vector3(-0.0025f, -0.05f, 0f);     //new center
+
+            // Start a coroutine to revert the changes after the specified duration
+            StartCoroutine(RevertColliderProperties(1.1f));  
+        }
+        
     }
     
 
@@ -209,8 +240,34 @@ public class PlayerMovement_v2 : MonoBehaviour
         //playerObject.GetComponent<Animator>().Play("Jump");
         playerObject.GetComponent<Animator>().Play("Flip");
         
+        if (capsuleCollider != null)
+        {
+            // Set the new height and center
+            capsuleCollider.height = 1.0f;        //new height
+            capsuleCollider.center = new Vector3(-0.0025f, -0.5f, -0.05f);     //new center
+
+            // Start a coroutine to revert the changes after the specified duration
+            
+            StartCoroutine(RevertColliderProperties(0.75f)); 
+            
+                  
+        }
     }
 
+    private IEnumerator RevertColliderProperties(float duration)
+    {
+        
+        
+        // Wait for the specified duration
+        yield return new WaitForSeconds(duration);
+        
+        capsuleCollider.height = originalHeight;
+        capsuleCollider.center = originalCenter;
+
+
+        
+        
+    }
 
 
     bool IsGrounded()
