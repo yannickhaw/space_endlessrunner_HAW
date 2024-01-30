@@ -354,8 +354,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0.758
   blurRadius:
-    m_OverrideState: 0
-    m_Value: 0.0212
+    m_OverrideState: 1
+    m_Value: 0
   blurStrength:
     m_OverrideState: 0
     m_Value: 8

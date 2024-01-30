@@ -48,6 +48,8 @@ public class PlayerMovement_v2 : MonoBehaviour
     public static bool isMovingRight = false;
     public static bool isDucking = false; 
 
+    public static bool slideCooldown = false;
+
     // Definiere die Gelenktypen fuer den SpineBase (Rumpf), Kopf, linken Fuss und rechten Fuss
     JointType spineBase = JointType.SpineBase;
     JointType head = JointType.Head;
@@ -181,7 +183,7 @@ public class PlayerMovement_v2 : MonoBehaviour
             Jump();
         }
 
-        if ((Input.GetKey("down") || isDucking) && IsGrounded() && GameOverManager.gameOver == false)
+        if ((Input.GetKey("down") || isDucking) && IsGrounded() && !slideCooldown && GameOverManager.gameOver == false)
         {
             Slide();
         }
@@ -242,6 +244,7 @@ public class PlayerMovement_v2 : MonoBehaviour
         
         if (capsuleCollider != null)
         {
+            slideCooldown = true;
             // Set the new height and center
             capsuleCollider.height = 1.0f;        //new height
             capsuleCollider.center = new Vector3(-0.0025f, -0.5f, -0.05f);     //new center
@@ -260,6 +263,8 @@ public class PlayerMovement_v2 : MonoBehaviour
         
         // Wait for the specified duration
         yield return new WaitForSeconds(duration);
+
+        slideCooldown = false;
         
         capsuleCollider.height = originalHeight;
         capsuleCollider.center = originalCenter;
