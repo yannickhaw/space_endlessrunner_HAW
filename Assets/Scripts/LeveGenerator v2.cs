@@ -10,7 +10,8 @@ public class LevelGenerator : MonoBehaviour
 
     public GameObject[] WorldSections;
 
-    public float StartPlayerspeed = 5f;
+    public float StartPlayerspeed;
+    public float maxSpeed;
 
     private float Index = 0;
     
@@ -43,10 +44,20 @@ public class LevelGenerator : MonoBehaviour
         TempSection1.transform.position = new Vector3(0, 0, 25);
         
         
-        int RandomInt2 = Random.Range(0, WorldSections.Length);                        // Generiere zufällig ein Tile1 oder Tile2 für den zweiten Abschnitt
+        int RandomInt2 = Random.Range(0, WorldSections.Length);                        // Generiere zufällig ein Tile für den zweiten Abschnitt
+
         GameObject TempSection2 = Instantiate(WorldSections[RandomInt2], transform);
         TempSection2.transform.position = new Vector3(0, 0, 35);
+
+        int RandomInt3 = Random.Range(0, WorldSections.Length);                        // Generiere zufällig ein Tile für den zweiten Abschnitt
+
+        GameObject TempSection3 = Instantiate(WorldSections[RandomInt3], transform);
+        TempSection3.transform.position = new Vector3(0, 0, 45);
         
+        int RandomInt4 = Random.Range(0, WorldSections.Length);                        // Generiere zufällig ein Tile für den zweiten Abschnitt
+
+        GameObject TempSection4 = Instantiate(WorldSections[RandomInt4], transform);
+        TempSection4.transform.position = new Vector3(0, 0, 55);
     
         
     }
@@ -66,25 +77,35 @@ public class LevelGenerator : MonoBehaviour
                 int RandomInt1 = Random.Range(0, WorldSections.Length);                         // Generiere zufällig ein Tile1 oder Tile2 für den zweiten Abschnitt
 
                 GameObject TempSection1 = Instantiate(WorldSections[RandomInt1], transform);
-                TempSection1.transform.position = new Vector3(0, 0, 45);
+                TempSection1.transform.position = new Vector3(0, 0, 65);
 
                 int RandomInt2 = Random.Range(0, WorldSections.Length);                        // Generiere zufällig ein Tile1 oder Tile2 für den zweiten Abschnitt
 
                 GameObject TempSection2 = Instantiate(WorldSections[RandomInt2], transform);
-                TempSection2.transform.position = new Vector3(0, 0, 55);
+                TempSection2.transform.position = new Vector3(0, 0, 75);
+
+               
 
            
                 Index = Index - 20f;  
 
-            
-                /*StartPlayerspeed = 10* Mathf.Log(StartPlayerspeed);            
-                Debug.Log(StartPlayerspeed);
-                StartPlayerspeed = StartPlayerspeed  * 1.1f; */
-                //StartPlayerspeed = StartPlayerspeed  +  0.1f; 
-                Debug.Log(StartPlayerspeed);
 
                                                   // Aktualisiere den Index für die nächste Überprüfung
             }
+
+        
+        if (StartPlayerspeed < maxSpeed)
+        {
+            StartPlayerspeed += 0.02f * Time.deltaTime;  
+                //StartPlayerspeed = StartPlayerspeed  * 1.1f; 
+                //StartPlayerspeed = StartPlayerspeed  +  0.1f;
+        }
+        else
+        {
+            StartPlayerspeed += 0.005f * Time.deltaTime;
+        }
+                
+        Debug.Log("PlayerSpeed:  " + StartPlayerspeed);
            
         }
         

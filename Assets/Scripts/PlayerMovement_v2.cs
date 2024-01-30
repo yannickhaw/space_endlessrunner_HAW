@@ -8,6 +8,8 @@ public class PlayerMovement_v2 : MonoBehaviour
 {
 
     Rigidbody rb;
+
+    Body body;
     [SerializeField] float LRmovementSpeed = 5f;
     [SerializeField] float VHmovementSpeed = 0f;                     // Vorne / Hinten Movement Speed
     [SerializeField] float jumpForce = 5f;
@@ -17,6 +19,7 @@ public class PlayerMovement_v2 : MonoBehaviour
     [SerializeField]
     public GameObject playerObject;
 
+    private float playerXcoordinate = 0; //In Game X-Koordinate auf die die Kinect coordinate gemappt wird
     private KinectSensor _sensor;
     private BodyFrameReader _reader;
     private Body[] _Data;
@@ -119,6 +122,19 @@ public class PlayerMovement_v2 : MonoBehaviour
             }
         }
 
+        //Koordinatenmapping von kinect koordinaten zu in game Player Koordinaten
+        /*if(!Input.GetKey("up") && GameOverManager.gameOver == false)
+        {
+            transform.position = new Vector3(playerXcoordinate, transform.position.y, transform.position.z);
+            //playerXcoordinate = horizontalMovement(body);
+
+            Debug.Log("Current X position: " + playerXcoordinate);
+        // aktuelle X-Position des Gelenks
+        }
+        */
+        
+        
+        
         // Reset horizontal velocity when neither left nor right key is pressed
         if ((!Input.GetKey("left") && !Input.GetKey("right")) || (!isMovingRight && !isMovingLeft))
         {
@@ -130,7 +146,9 @@ public class PlayerMovement_v2 : MonoBehaviour
         if((Input.GetKey("left") || isMovingLeft) && GameOverManager.gameOver == false)
         {
             Debug.Log("Moving Left");
+            //transform.position = new Vector3(-2f, transform.position.y, transform.position.z);
             GoLeft();
+
         }
 
         if((Input.GetKey("right") || isMovingRight) && GameOverManager.gameOver == false)
@@ -190,6 +208,7 @@ public class PlayerMovement_v2 : MonoBehaviour
         //rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
         //playerObject.GetComponent<Animator>().Play("Jump");
         playerObject.GetComponent<Animator>().Play("Flip");
+        
     }
 
 
@@ -199,6 +218,15 @@ public class PlayerMovement_v2 : MonoBehaviour
        return Physics.CheckSphere(groundCheck.position, .1f, ground);
     } 
 
+    float horizontaltest(Body bdy)
+    {
+        CameraSpacePoint basePosition = bdy.Joints[spineBase].Position;
+        // aktuelle X-Position des Gelenks
+        float currentXPosition = basePosition.X;
+        return currentXPosition;
+
+    }
+
 
    // Ueberwacht die links und rechts Bewegung
     void horizontalMovement(Body body)
@@ -207,7 +235,6 @@ public class PlayerMovement_v2 : MonoBehaviour
         CameraSpacePoint basePosition = body.Joints[spineBase].Position;
         // aktuelle X-Position des Gelenks
         float currentXPosition = basePosition.X;
-
          // Ueberpruefen ob die Aenderung der X-Position groeser ist als der Schwellenwert fuer seitliche Bewegungen
         if (Mathf.Abs(currentXPosition - _previousXPosition) > MovementThreshold)
         {
@@ -225,6 +252,7 @@ public class PlayerMovement_v2 : MonoBehaviour
                 isMovingRight = false;
                 Debug.Log("Bewegt sich nach links----");
             }
+
         }
         // Wenn die Aenderung der X-Position unter dem Schwellenwert liegt, setze beide Bewegungsstatus zurueck.
         else
@@ -233,7 +261,8 @@ public class PlayerMovement_v2 : MonoBehaviour
             isMovingRight = false;
         }
 
-        _previousXPosition = currentXPosition;
+        _previousXPosition = currentXPosition; 
+
     }
 
     /// Ueberwacht das Springen und Ducken
