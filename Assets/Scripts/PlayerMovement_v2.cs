@@ -23,6 +23,8 @@ public class PlayerMovement_v2 : MonoBehaviour
     private Vector3 originalCenter;
     private float originalHeight;
 
+    private float playerXcoordinate = 0;    // In-Game X-Koordinate
+
     private KinectSensor _sensor;
     private BodyFrameReader _reader;
     private Body[] _Data;
@@ -33,7 +35,7 @@ public class PlayerMovement_v2 : MonoBehaviour
     private float startYPositionHead;
 
     // Schwellen fuer die Positionsaenderung - umso gruesser bzw. kleiner diese sind, desto schwieriger
-    private float MovementThreshold = 0.1f;     // Schwelle fuer Seitwaertsbewegung
+    private float MovementThreshold = 0.05f;     // Schwelle fuer Seitwaertsbewegung
     private float BendingThreshold = 0.86f;     // Schwelle fuer das Buecken (negative Werte, da Y-Position nach unten zunimmt)
     private float JumpThreshold = 1.075f;          // Schwelle fuer das Erkennen eines Sprungs
 
@@ -203,8 +205,8 @@ public class PlayerMovement_v2 : MonoBehaviour
             // Start a coroutine to revert the changes after the specified duration
             
             StartCoroutine(RevertColliderProperties(0.75f)); 
-            
-                  
+
+         
         }
     }
 
@@ -239,8 +241,18 @@ public class PlayerMovement_v2 : MonoBehaviour
         CameraSpacePoint basePosition = body.Joints[spineBase].Position;
         // aktuelle X-Position des Gelenks
         float currentXPosition = basePosition.X;
-        Debug.Log("X Pos" + currentXPosition);
+        Debug.Log("Kinect X-Pos:  " + currentXPosition);
 
+        if (currentXPosition < 0.45f && currentXPosition > -0.45f)
+        {
+            playerXcoordinate = 5f * currentXPosition;        //Seitliche Begrenzung in Unity geht von X = -2,3 bis X = 2,3
+            
+            transform.position = new Vector3(playerXcoordinate, transform.position.y, transform.position.z);
+
+            Debug.Log("Unity: Current X-Pos:   " + playerXcoordinate);
+        }
+/////////////////////////
+/*
          // Ueberpruefen ob die Aenderung der X-Position groeser ist als der Schwellenwert fuer seitliche Bewegungen
         if (Mathf.Abs(currentXPosition - _previousXPosition) > MovementThreshold)
         {
@@ -265,6 +277,7 @@ public class PlayerMovement_v2 : MonoBehaviour
             isMovingLeft = false;
             isMovingRight = false;
         }
+*/
 
         _previousXPosition = currentXPosition;
     }
