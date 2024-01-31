@@ -8,8 +8,6 @@ public class PlayerMovement_v2 : MonoBehaviour
 {
 
     Rigidbody rb;
-
-    Body body;
     [SerializeField] float LRmovementSpeed = 5f;
     [SerializeField] float VHmovementSpeed = 0f;                     // Vorne / Hinten Movement Speed
     [SerializeField] float jumpForce = 5f;
@@ -19,28 +17,25 @@ public class PlayerMovement_v2 : MonoBehaviour
     [SerializeField]
     public GameObject playerObject;
 
-    private CapsuleCollider capsuleCollider;        // Reference to the Capsule Collider component
+    private CapsuleCollider capsuleCollider;    // Reference to the Capsule Collider component
     
     // Original values of the Capsule Collider properties
     private Vector3 originalCenter;
     private float originalHeight;
 
-    //private float playerXcoordinate = 0; //In Game X-Koordinate auf die die Kinect coordinate gemappt wird
     private KinectSensor _sensor;
     private BodyFrameReader _reader;
     private Body[] _Data;
 
     // Variablen fuer die Gelenkpositionen - speichert immer die vorherigen Positionen
     private float _previousXPosition;
-    private float _previousYPositionBase;
-    private float _previousHeadPositionY; 
-    private float _previousKneeLeftPositionY;
-    private float _previousKneeRightPositionY;
+    
+    private float startYPositionHead;
 
     // Schwellen fuer die Positionsaenderung - umso gruesser bzw. kleiner diese sind, desto schwieriger
-    private float MovementThreshold = 0.09f;     // Schwelle fuer Seitwaertsbewegung
-    private float BendingThreshold = -0.2f;     // Schwelle fuer das Buecken (negative Werte, da Y-Position nach unten zunimmt)
-    public float JumpThreshold = 0.015f;          // Schwelle fuer das Erkennen eines Sprungs
+    private float MovementThreshold = 0.1f;     // Schwelle fuer Seitwaertsbewegung
+    private float BendingThreshold = 0.86f;     // Schwelle fuer das Buecken (negative Werte, da Y-Position nach unten zunimmt)
+    private float JumpThreshold = 1.075f;          // Schwelle fuer das Erkennen eines Sprungs
 
     // Variablen fuer den aktuellen Zustand
     public static bool isJumping = false;
@@ -48,13 +43,13 @@ public class PlayerMovement_v2 : MonoBehaviour
     public static bool isMovingRight = false;
     public static bool isDucking = false; 
 
-    public static bool slideCooldown = false;
 
+    public static bool slideCooldown = false;
     // Definiere die Gelenktypen fuer den SpineBase (Rumpf), Kopf, linken Fuss und rechten Fuss
     JointType spineBase = JointType.SpineBase;
     JointType head = JointType.Head;
-    JointType kneeLeft = JointType.KneeLeft;
-    JointType kneeRight = JointType.KneeRight;
+
+    bool headStart = true;
 
     // Start wird beim ersten Frame aufgerufen
     void Start()
@@ -74,7 +69,6 @@ public class PlayerMovement_v2 : MonoBehaviour
             Debug.LogError("Capsule Collider component not found on the player GameObject.");
         }
 
-
         _sensor = KinectSensor.GetDefault();
 
         if (_sensor != null)
@@ -88,38 +82,13 @@ public class PlayerMovement_v2 : MonoBehaviour
         }
 
         _Data = new Body[_sensor.BodyFrameSource.BodyCount];
+
+        
     }
 
-    // Update wird einmal pro Frame aufgerufen
-    /*void Update()
-    {
-        //float horizontalInput = Input.GetAxis("Horizontal");
-        //float verticalInput = Input.GetAxis("Vertical");
-        // Preserve the vertical velocity
-        float verticalVelocity = rb.velocity.y;
-
-        if (_reader != null)
-        {
-            var frame = _reader.AcquireLatestFrame();
-
-            if (frame != null)
-            {
-                frame.GetAndRefreshBodyData(_Data);
-
-                foreach (var body in _Data)
-                {
-                    if (body != null && body.IsTracked)
-                    {
-                        horizontalMovement(body);
-                        verticalMovement(body);
-                    }
-                }
-
-                frame.Dispose();
-            }
-        }*/
     void Update()
     {
+        
         float verticalVelocity = rb.velocity.y;
 
         if (_reader != null)
@@ -129,6 +98,7 @@ public class PlayerMovement_v2 : MonoBehaviour
             if (frame != null)
             {
                 frame.GetAndRefreshBodyData(_Data);
+
 
                 // Parallelisiere die Verarbeitung der Body-Daten
                 Parallel.ForEach(_Data, body =>
@@ -144,19 +114,6 @@ public class PlayerMovement_v2 : MonoBehaviour
             }
         }
 
-        //Koordinatenmapping von kinect koordinaten zu in game Player Koordinaten
-        /*if(!Input.GetKey("up") && GameOverManager.gameOver == false)
-        {
-            transform.position = new Vector3(playerXcoordinate, transform.position.y, transform.position.z);
-            //playerXcoordinate = horizontalMovement(body);
-
-            Debug.Log("Current X position: " + playerXcoordinate);
-        // aktuelle X-Position des Gelenks
-        }
-        */
-        
-        
-        
         // Reset horizontal velocity when neither left nor right key is pressed
         if ((!Input.GetKey("left") && !Input.GetKey("right")) || (!isMovingRight && !isMovingLeft))
         {
@@ -168,9 +125,7 @@ public class PlayerMovement_v2 : MonoBehaviour
         if((Input.GetKey("left") || isMovingLeft) && GameOverManager.gameOver == false)
         {
             Debug.Log("Moving Left");
-            //transform.position = new Vector3(-2f, transform.position.y, transform.position.z);
             GoLeft();
-
         }
 
         if((Input.GetKey("right") || isMovingRight) && GameOverManager.gameOver == false)
@@ -178,18 +133,15 @@ public class PlayerMovement_v2 : MonoBehaviour
             GoRight();
         }
 
-        if ((Input.GetButtonDown("Jump") || isJumping) && IsGrounded() && GameOverManager.gameOver == false)
+        if (((Input.GetButtonDown("Jump") || isJumping) && IsGrounded()) && GameOverManager.gameOver == false)
         {
             Jump();
         }
 
-        if ((Input.GetKey("down") || isDucking) && IsGrounded() && !slideCooldown && GameOverManager.gameOver == false)
+        if (((Input.GetKey("down") || isDucking) && IsGrounded()) && !slideCooldown && GameOverManager.gameOver == false)
         {
             Slide();
         }
-
-
-
     }
     
     void GoLeft()
@@ -231,7 +183,6 @@ public class PlayerMovement_v2 : MonoBehaviour
             // Start a coroutine to revert the changes after the specified duration
             StartCoroutine(RevertColliderProperties(1.1f));  
         }
-        
     }
     
 
@@ -241,7 +192,7 @@ public class PlayerMovement_v2 : MonoBehaviour
         //rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
         //playerObject.GetComponent<Animator>().Play("Jump");
         playerObject.GetComponent<Animator>().Play("Flip");
-        
+
         if (capsuleCollider != null)
         {
             slideCooldown = true;
@@ -280,15 +231,6 @@ public class PlayerMovement_v2 : MonoBehaviour
        return Physics.CheckSphere(groundCheck.position, .1f, ground);
     } 
 
-    float horizontaltest(Body bdy)
-    {
-        CameraSpacePoint basePosition = bdy.Joints[spineBase].Position;
-        // aktuelle X-Position des Gelenks
-        float currentXPosition = basePosition.X;
-        return currentXPosition;
-
-    }
-
 
    // Ueberwacht die links und rechts Bewegung
     void horizontalMovement(Body body)
@@ -297,6 +239,8 @@ public class PlayerMovement_v2 : MonoBehaviour
         CameraSpacePoint basePosition = body.Joints[spineBase].Position;
         // aktuelle X-Position des Gelenks
         float currentXPosition = basePosition.X;
+        Debug.Log("X Pos" + currentXPosition);
+
          // Ueberpruefen ob die Aenderung der X-Position groeser ist als der Schwellenwert fuer seitliche Bewegungen
         if (Mathf.Abs(currentXPosition - _previousXPosition) > MovementThreshold)
         {
@@ -305,16 +249,15 @@ public class PlayerMovement_v2 : MonoBehaviour
             {
                 isMovingRight = true;
                 isMovingLeft = false;
-                Debug.Log("Bewegt sich nach rechts------------------------------------------!");
+                Debug.Log("Bewegt sich nach rechts-----");
             }
             // Falls die X-Position abnimmt, setze den Bewegungsstatus nach links.
             else
             {
                 isMovingLeft = true;
                 isMovingRight = false;
-                Debug.Log("Bewegt sich nach links----");
+                Debug.Log("-----Bewegt sich nach links");
             }
-
         }
         // Wenn die Aenderung der X-Position unter dem Schwellenwert liegt, setze beide Bewegungsstatus zurueck.
         else
@@ -323,49 +266,45 @@ public class PlayerMovement_v2 : MonoBehaviour
             isMovingRight = false;
         }
 
-        _previousXPosition = currentXPosition; 
-
+        _previousXPosition = currentXPosition;
     }
 
     /// Ueberwacht das Springen und Ducken
     void verticalMovement(Body body)
     {
-       
-        // Erhalte die Positionen der Gelenke des Koerpers aus dem Kinect-Body-Objekt
-        CameraSpacePoint basePosition = body.Joints[spineBase].Position;
+        // Erhalte die Positionen des Gelenks des Koerpers aus dem Kinect-Body-Objekt
         CameraSpacePoint headPosition = body.Joints[head].Position;
-        CameraSpacePoint kneeLeftPosition = body.Joints[kneeLeft].Position;
-        CameraSpacePoint kneeRightPosition = body.Joints[kneeRight].Position;
 
-        // aktuelle Y-Positionen der verschiedenen Gelenke
-        float currentYPositionBase = basePosition.Y;
+        // aktuelle Y-Positionen des Gelenks
         float currentYPositionHead = headPosition.Y;
-        float currentYPositionKneeLeft = kneeLeftPosition.Y;
-        float currentYPositionKneeRight = kneeRightPosition.Y;
+        //Debug.Log("Y-Head-Pos  " + currentYPositionHead);
+        if(headStart == true)
+        {
+            //Debug.Log("wird ausgelöst");
+            startYPositionHead = headPosition.Y;
+            //Debug.Log("startY:   " + startYPositionHead);
+            headStart = false;
+        }
 
-        // Variablen fuer die Differenzen der Positionen
-        float baseChange = Mathf.Abs(currentYPositionBase - _previousYPositionBase);
-        float headChange = currentYPositionHead - _previousHeadPositionY;
-        float kneeLeftChange = Mathf.Abs(currentYPositionKneeLeft - _previousKneeLeftPositionY);
-        float kneeRightChange = Mathf.Abs(currentYPositionKneeRight - _previousKneeRightPositionY);
+        // Variable fuer die Differenz der Position
+        float headChange = currentYPositionHead - startYPositionHead;
+        //Debug.Log("Headchange  " + headChange);
 
         // Ueberprueft ob sich die Y-Position des SpineBase-Gelenks oder der Fuesse ausreichend aendert
-        if (baseChange > JumpThreshold &&
-            kneeLeftChange > 0.05f &&
-            kneeRightChange > 0.05f )
+        if (currentYPositionHead > startYPositionHead * JumpThreshold)
         {
             // Hier wird der Sprungstatus geaendert
             isJumping = true;
             isDucking = false;
-            Debug.Log("Springt------------------------------------------------------------");
+            //Debug.Log("springt: " + headChange);
         }
         // Ueberpruefe, ob sich die Y-Position des Kopfes nach unten aendert
-        else if (headChange < BendingThreshold )
+        else if (currentYPositionHead < startYPositionHead * BendingThreshold)
         {
             // Hier wird der Ducken-Status geaendert
             isDucking = true;
             isJumping = false;
-            Debug.Log("Duckt--");
+            //Debug.Log("duckt sich: " + headChange);
         }
         else
         {
@@ -373,12 +312,6 @@ public class PlayerMovement_v2 : MonoBehaviour
             isJumping = false;
             isDucking = false;
         }
-
-        // Speichere die aktuellen Y-Positionen fuer den naechsten Frame
-        _previousYPositionBase = currentYPositionBase;
-        _previousHeadPositionY = currentYPositionHead;
-        _previousKneeLeftPositionY = currentYPositionKneeLeft;
-        _previousKneeRightPositionY = currentYPositionKneeRight;
     }
 
     // Wird aufgerufen, wenn die Anwendung beendet wird

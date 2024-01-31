@@ -3233,6 +3233,10 @@ PrefabInstance:
       value: SM_Env_Rock_04
       objectReference: {fileID: 0}
     - target: {fileID: 123416, guid: 103192ca7c83e7f45ac325ffa8e2fd8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 123416, guid: 103192ca7c83e7f45ac325ffa8e2fd8e, type: 3}
       propertyPath: m_TagString
       value: EnemyObstacle
       objectReference: {fileID: 0}

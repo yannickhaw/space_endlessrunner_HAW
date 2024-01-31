@@ -296,6 +296,7 @@ public class PlayerMovement_v3 : MonoBehaviour
             // Hier wird der Sprungstatus geaendert
             isJumping = true;
             isDucking = false;
+            Debug.Log(headChange);
             Debug.Log("springt");
         }
         // Ueberpruefe, ob sich die Y-Position des Kopfes nach unten aendert
@@ -304,6 +305,7 @@ public class PlayerMovement_v3 : MonoBehaviour
             // Hier wird der Ducken-Status geaendert
             isDucking = true;
             isJumping = false;
+            Debug.Log(headChange);
             Debug.Log("duckt sich");
         }
         else

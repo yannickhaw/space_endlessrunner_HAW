@@ -2820,7 +2820,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009208936}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c565e625defff14b9c5e53868b2f922, type: 3}
   m_Name: 
@@ -2833,7 +2833,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   playerObject: {fileID: 51761340}
-  JumpThreshold: 0.015
 --- !u!114 &1009208948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2841,7 +2840,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009208936}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a14f607ba85f74c6ea7e79c5e1e9ae12, type: 3}
   m_Name: 
@@ -2870,7 +2869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1067513893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3772,7 +3771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6550c9b090d1d4363828e2589b285351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 0}
+  cursor: {fileID: 1846403501}
   playButton: {fileID: 774499173}
   quitButton: {fileID: 959371870}
 --- !u!1 &1866913767

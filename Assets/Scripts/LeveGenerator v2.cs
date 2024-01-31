@@ -105,7 +105,7 @@ public class LevelGenerator : MonoBehaviour
             StartPlayerspeed += 0.005f * Time.deltaTime;
         }
                 
-        Debug.Log("PlayerSpeed:  " + StartPlayerspeed);
+        //Debug.Log("PlayerSpeed:  " + StartPlayerspeed);
            
         }
         
