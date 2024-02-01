@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Space_Runner_Scene.unity
     guid: 0f8ffccc21d7a5a4bbc4ff8b8505b1af
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/old/Endscreen.unity
     guid: b752048f604f2c240bdf4eed1c1a8202
   m_configObjects: {}
