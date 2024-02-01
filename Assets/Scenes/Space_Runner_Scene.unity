@@ -677,7 +677,7 @@ MonoBehaviour:
   - {fileID: 1271097991817546194, guid: e1a9003ac657c624ea5be7102eb1a896, type: 3}
   - {fileID: 1271097991817546194, guid: bb40b78325f700f45b6ec89e19a071e0, type: 3}
   - {fileID: 1271097991817546194, guid: bcf45f6a56aad4122b6945ddcfa025aa, type: 3}
-  - {fileID: 1271097991817546194, guid: bcf45f6a56aad4122b6945ddcfa025aa, type: 3}
+  - {fileID: 1271097991817546194, guid: 781d3ced64311ce42995f9dada69ebad, type: 3}
   - {fileID: 1271097991817546194, guid: e1a9003ac657c624ea5be7102eb1a896, type: 3}
   StartPlayerspeed: 5
   maxSpeed: 10
@@ -2869,7 +2869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1067513893
 MonoBehaviour:
   m_ObjectHideFlags: 0
