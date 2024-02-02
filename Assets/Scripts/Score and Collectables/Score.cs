@@ -31,7 +31,7 @@ public class Score : MonoBehaviour
         // Erhöhe den Punktestand basierend auf der Zeit und der vorgegebenen Punkte pro Sekunde
         //scoreUI.text = scoreText.ToString();
 
-        highscoreUI.text = Highscore.ToString();
+        highscoreUI.text = "Highscore: " + Mathf.Round(Highscore).ToString();
         
         if(GameOverManager.gameOver == false)
         {
@@ -42,6 +42,7 @@ public class Score : MonoBehaviour
         else if (GameOverManager.gameOver == true && currentScore > PlayerPrefs.GetFloat("Highscore"))
         {
             PlayerPrefs.SetFloat("Highscore", currentScore);
+            
             Highscore = PlayerPrefs.GetFloat("Highscore");
         }
 
