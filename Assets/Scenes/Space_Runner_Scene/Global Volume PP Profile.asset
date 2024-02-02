@@ -21,7 +21,7 @@ MonoBehaviour:
     m_Value: 1.01
   intensity:
     m_OverrideState: 1
-    m_Value: 3.25
+    m_Value: 3
   scatter:
     m_OverrideState: 1
     m_Value: 0.52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   intensity:
     m_OverrideState: 1
     m_Value: 0.039
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   mode:
     m_OverrideState: 1
     m_Value: 2
@@ -294,13 +294,13 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.241
+    m_Value: 0.271
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.073
+    m_Value: 0.428
   rounded:
-    m_OverrideState: 1
-    m_Value: 1
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!114 &155868458003296445
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8752436c1c6e30f4da82236df21c18e3, type: 3}
   m_Name: Fog
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     m_OverrideState: 1
     m_Value: 1
@@ -322,7 +322,7 @@ MonoBehaviour:
     m_Value: 2
   alphaMultiplier:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.629
   additionalLightsIntensityMultiplier:
     m_OverrideState: 0
     m_Value: 1
@@ -340,10 +340,10 @@ MonoBehaviour:
     m_Value: 0.2
   density:
     m_OverrideState: 1
-    m_Value: 0.286
+    m_Value: 0.088
   minDensity:
     m_OverrideState: 1
-    m_Value: 0.015
+    m_Value: 0
   fogColor:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -399,10 +399,10 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.6
+    m_Value: 0.337
   response:
     m_OverrideState: 1
-    m_Value: 0.56
+    m_Value: 0.52
   texture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
   m_Name: SplitToning
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 1
     m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -733,7 +733,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: -0.156
+    m_Value: -0.42
   xMultiplier:
     m_OverrideState: 0
     m_Value: 1
@@ -741,8 +741,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   center:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   scale:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.11

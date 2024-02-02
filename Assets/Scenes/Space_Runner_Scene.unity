@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.616529, g: 0.61102706, b: 0.6509434, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.94716984, g: 0.94716984, b: 0.94716984, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.02
   m_LinearFogStart: 0
@@ -3681,7 +3681,7 @@ RectTransform:
   m_GameObject: {fileID: 1846403499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.64, y: 1, z: 1}
+  m_LocalScale: {x: 1.08, y: 1.22, z: 1.12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1849385530}
@@ -3711,7 +3711,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 5ffda9247e5c44717a3b7464cd69dad2, type: 3}
+  m_Texture: {fileID: 2800000, guid: 4ac9c233c54543345b86e06aecb3ac9d, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
