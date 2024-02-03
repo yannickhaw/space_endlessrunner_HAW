@@ -8,6 +8,21 @@ public class CoinCollector : MonoBehaviour
 {
     public TextMeshProUGUI coinscoreUI;
     int coincount = 0;
+    int totalcoins;
+
+    void Start()
+    {
+        if(PlayerPrefs.HasKey("TotalCoins"))
+        {
+            totalcoins = PlayerPrefs.GetInt("TotalCoins");
+        }
+        else
+        {
+            totalcoins = 0;
+        }
+    }
+    
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Coin"))
@@ -16,7 +31,9 @@ public class CoinCollector : MonoBehaviour
             Destroy(other.gameObject);
             coincount++;
             coinscoreUI.text = "Coins: " + coincount;
-            
+
+            totalcoins++;        
+            PlayerPrefs.SetInt("TotalCoins", totalcoins);
         }
     }
 }
