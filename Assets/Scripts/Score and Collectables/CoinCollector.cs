@@ -7,6 +7,7 @@ using TMPro;
 public class CoinCollector : MonoBehaviour
 {
     public TextMeshProUGUI coinscoreUI;
+    public TextMeshProUGUI totalcoinscoreUI;
     int coincount = 0;
     int totalcoins;
 
@@ -34,6 +35,7 @@ public class CoinCollector : MonoBehaviour
 
             totalcoins++;        
             PlayerPrefs.SetInt("TotalCoins", totalcoins);
+            totalcoinscoreUI.text = "Coins: " + totalcoins;
         }
     }
 }

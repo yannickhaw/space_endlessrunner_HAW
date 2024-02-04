@@ -96,13 +96,13 @@ public class LevelGenerator : MonoBehaviour
         
         if (StartPlayerspeed < maxSpeed)
         {
-            StartPlayerspeed += 0.02f * Time.deltaTime;  
+            StartPlayerspeed += 0.035f * Time.deltaTime;  
                 //StartPlayerspeed = StartPlayerspeed  * 1.1f; 
                 //StartPlayerspeed = StartPlayerspeed  +  0.1f;
         }
         else
         {
-            StartPlayerspeed += 0.005f * Time.deltaTime;
+            StartPlayerspeed += 0.01f * Time.deltaTime;
         }
                 
         //Debug.Log("PlayerSpeed:  " + StartPlayerspeed);
