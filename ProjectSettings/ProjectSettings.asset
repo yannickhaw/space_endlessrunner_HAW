@@ -16,14 +16,14 @@ PlayerSettings:
   productName: Space Endless Runner
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 2
-  m_SplashScreenLogoStyle: 0
+  m_SplashScreenLogoStyle: 1
   m_SplashScreenDrawMode: 0
-  m_SplashScreenBackgroundAnimationZoom: 1
+  m_SplashScreenBackgroundAnimationZoom: 0
   m_SplashScreenLogoAnimationZoom: 0.15
   m_SplashScreenBackgroundLandscapeAspect: 1
   m_SplashScreenBackgroundPortraitAspect: 1
@@ -40,10 +40,10 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
-  - logo: {fileID: 21300000, guid: 1f20535e5b19dae4abd955474491f9d0, type: 3}
+  - logo: {fileID: 21300000, guid: a2bf7ea83ef93a34c941ab96be788e5a, type: 3}
     duration: 4
-  - logo: {fileID: 21300000, guid: e9f70f45918b13945b6703454bfa99d9, type: 3}
-    duration: 4
+  - logo: {fileID: 21300000, guid: 2237e6d2b62ddbd4ba84284ee7921d09, type: 3}
+    duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
@@ -287,7 +287,7 @@ PlayerSettings:
   - m_BuildTarget: Standalone
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: e5aaf30e569994d4ab3e49689e74b63f, type: 3}
+      m_Icon: {fileID: 2800000, guid: 2fa60f30b9117ba488ce9031f249eb26, type: 3}
       m_Width: 1024
       m_Height: 1024
       m_Kind: 0
@@ -668,9 +668,9 @@ PlayerSettings:
   ps4IncludedModules: []
   ps4attribVROutputEnabled: 0
   monoEnv: 
-  splashScreenBackgroundSourceLandscape: {fileID: 0}
+  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: 5e662ecdfc8316c45b9b1c88121a1731, type: 3}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
-  blurSplashScreenBackground: 1
+  blurSplashScreenBackground: 0
   spritePackerPolicy: 
   webGLMemorySize: 16
   webGLExceptionSupport: 1

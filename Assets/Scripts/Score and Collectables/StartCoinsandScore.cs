@@ -36,8 +36,8 @@ public class StartCoinsandScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        highscoretext.text = "Highscore: " + Mathf.Round(Highscore).ToString();
-        totalcoinstext.text = "Coins: " + totalcoins;
+        highscoretext.text = "Best: " + Mathf.Round(Highscore).ToString() + "m";
+        totalcoinstext.text = "      " + totalcoins;
     }
 
 

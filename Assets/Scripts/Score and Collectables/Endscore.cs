@@ -29,7 +29,7 @@ public class Endscore : MonoBehaviour
     {
         // Zeige den Punktestand im Text-Objekt an
         
-        scoreUI.text = "Score: " + Mathf.Round(currentEndScore).ToString();
+        scoreUI.text = "" + Mathf.Round(currentEndScore).ToString() + "m";
 
     }
 }

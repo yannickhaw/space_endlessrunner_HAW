@@ -21,6 +21,7 @@ public class CoinCollector : MonoBehaviour
         {
             totalcoins = 0;
         }
+        totalcoinscoreUI.text = "" + totalcoins;
     }
     
     
@@ -31,11 +32,11 @@ public class CoinCollector : MonoBehaviour
             FindObjectOfType<SoundManager>().PlaySound("CoinSFX");
             Destroy(other.gameObject);
             coincount++;
-            coinscoreUI.text = "Coins: " + coincount;
+            coinscoreUI.text = "" + coincount;
 
             totalcoins++;        
             PlayerPrefs.SetInt("TotalCoins", totalcoins);
-            totalcoinscoreUI.text = "Coins: " + totalcoins;
+            totalcoinscoreUI.text = "" + totalcoins;
         }
     }
 }

@@ -6,6 +6,7 @@ public class GameOverManager : MonoBehaviour
 {
     public static bool gameOver;
     public GameObject gameOverPanel;
+    public GameObject scoreBackground;
 
     public GameObject ScoreText;
     public GameObject CoinText;
@@ -25,6 +26,7 @@ public class GameOverManager : MonoBehaviour
         {
             Time.timeScale = 1;
             gameOverPanel.SetActive(true);
+            scoreBackground.SetActive(false);
             CoinText.SetActive(false);
             ScoreText.SetActive(false);
         }

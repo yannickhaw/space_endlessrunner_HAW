@@ -8,6 +8,7 @@ public class Score : MonoBehaviour
     public TextMeshProUGUI scoreUI;
 
     public TextMeshProUGUI highscoreUI;
+    public TextMeshProUGUI highscoreUI2;
 
     public float scorePerSecond = 10f;                // Punktestand pro Sekunde
     private float currentScore = 0f;
@@ -31,7 +32,8 @@ public class Score : MonoBehaviour
         // Erhöhe den Punktestand basierend auf der Zeit und der vorgegebenen Punkte pro Sekunde
         //scoreUI.text = scoreText.ToString();
 
-        highscoreUI.text = "Highscore: " + Mathf.Round(Highscore).ToString();
+        //highscoreUI.text = "New Highscore!!! (" + Mathf.Round(Highscore).ToString() + "m)";
+        highscoreUI2.text = "Best: " + Mathf.Round(Highscore).ToString() + "m";
         
         if(GameOverManager.gameOver == false)
         {
@@ -42,7 +44,7 @@ public class Score : MonoBehaviour
         else if (GameOverManager.gameOver == true && currentScore > PlayerPrefs.GetFloat("Highscore"))
         {
             PlayerPrefs.SetFloat("Highscore", currentScore);
-            
+            highscoreUI.text = "New Highscore!!! (" + Mathf.Round(currentScore).ToString() + "m)";
             Highscore = PlayerPrefs.GetFloat("Highscore");
         }
 
@@ -55,7 +57,7 @@ public class Score : MonoBehaviour
 
     void UpdateScoreText()
     {
-        scoreUI.text = "Score: " + Mathf.Round(currentScore).ToString();
+        scoreUI.text = " " + Mathf.Round(currentScore).ToString() + "m";
 
     }
 }

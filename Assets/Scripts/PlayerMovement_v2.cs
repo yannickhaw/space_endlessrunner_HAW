@@ -245,7 +245,7 @@ public class PlayerMovement_v2 : MonoBehaviour
 
         if (currentXPosition < 0.45f && currentXPosition > -0.45f)
         {
-            playerXcoordinate = 5f * currentXPosition;        //Seitliche Begrenzung in Unity geht von X = -2,3 bis X = 2,3
+            playerXcoordinate = 0.44f * currentXPosition;        //Seitliche Begrenzung in Unity geht von X = -2 bis X = 2
             
             transform.position = new Vector3(playerXcoordinate, transform.position.y, transform.position.z);
 

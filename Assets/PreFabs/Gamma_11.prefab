@@ -1389,7 +1389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456046, guid: 103192ca7c83e7f45ac325ffa8e2fd8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.32
+      value: 3.23
       objectReference: {fileID: 0}
     - target: {fileID: 456046, guid: 103192ca7c83e7f45ac325ffa8e2fd8e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1397,7 +1397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456046, guid: 103192ca7c83e7f45ac325ffa8e2fd8e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.25
+      value: 8.08
       objectReference: {fileID: 0}
     - target: {fileID: 456046, guid: 103192ca7c83e7f45ac325ffa8e2fd8e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1898,6 +1898,14 @@ PrefabInstance:
     - target: {fileID: 41238406526551179, guid: 55daa95fdcc874e20afdd3308a88695b, type: 3}
       propertyPath: m_TagString
       value: EnemyObstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6216394171079056778, guid: 55daa95fdcc874e20afdd3308a88695b, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6216394171079056778, guid: 55daa95fdcc874e20afdd3308a88695b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7029126243338883730, guid: 55daa95fdcc874e20afdd3308a88695b, type: 3}
       propertyPath: m_LocalScale.x
