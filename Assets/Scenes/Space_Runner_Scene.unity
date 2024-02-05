@@ -1233,22 +1233,42 @@ MonoBehaviour:
   WorldSections:
   - {fileID: 1271097991817546194, guid: b08007a666ea2ad43b35b3a0f67c30ae, type: 3}
   - {fileID: 1271097991817546194, guid: 4fd932a9e3ce6dc4a8b340d54e35569f, type: 3}
+  - {fileID: 1271097991817546194, guid: 637bf473c98b8644d86ee411bea3e314, type: 3}
   - {fileID: 1271097991817546194, guid: bcf45f6a56aad4122b6945ddcfa025aa, type: 3}
   - {fileID: 1271097991817546194, guid: 9ffe77410c677814b92237785485e18e, type: 3}
   - {fileID: 1271097991817546194, guid: cbe371395e05002479acb19981103a85, type: 3}
+  - {fileID: 1271097991817546194, guid: a42ce54d734e972499fbd4bddc5d2c39, type: 3}
+  - {fileID: 1271097991817546194, guid: 1ae11431259915f4d94b5a0f46c5e13d, type: 3}
+  - {fileID: 1271097991817546194, guid: ac7d35ef51328f04ba1a1593e2628c89, type: 3}
+  - {fileID: 1271097991817546194, guid: 995041c12c9569a4995e019bb4905ac6, type: 3}
+  - {fileID: 1271097991817546194, guid: 1e24f0523ab549241812f79b11fb63c5, type: 3}
+  - {fileID: 1271097991817546194, guid: 63dd059eb6c72b849a1206a752859a8a, type: 3}
   - {fileID: 1271097991817546194, guid: 781d3ced64311ce42995f9dada69ebad, type: 3}
   - {fileID: 1271097991817546194, guid: e68d2d6d0c1d0ab4e938b1cdb2a0aed4, type: 3}
   - {fileID: 1271097991817546194, guid: 911e923b08bc73548b319d61b38e572e, type: 3}
   - {fileID: 1271097991817546194, guid: 2c7cc599596d9054eb675b5ed06d138a, type: 3}
   - {fileID: 1271097991817546194, guid: 9ef48c2c64081944eb441379b4c531d8, type: 3}
+  - {fileID: 1271097991817546194, guid: 9791470620d0d474991026db9d9525ab, type: 3}
+  - {fileID: 1271097991817546194, guid: 6ee2bd252d4a97a40b6d88c0de96adb2, type: 3}
   - {fileID: 1271097991817546194, guid: fe099c435d26be048b9bc7445c1eacbf, type: 3}
+  - {fileID: 1271097991817546194, guid: b8738cf6f3ac71f4a9b27a5182bff5c8, type: 3}
+  - {fileID: 1271097991817546194, guid: 71f2b5f865c342145903a7e6412c1aa0, type: 3}
+  - {fileID: 1271097991817546194, guid: a2439561e7393fe4b99ee0238e06450b, type: 3}
+  - {fileID: 1271097991817546194, guid: 15e751e1fa51bde4f8ef8436580a533a, type: 3}
+  - {fileID: 1271097991817546194, guid: 3e5dc67a6b3de1f408e7b671b65065de, type: 3}
+  - {fileID: 1271097991817546194, guid: 149bf8c010107484b86c71fc52170093, type: 3}
   - {fileID: 1271097991817546194, guid: 99ea34093fea50c41bbf210ec7cfc52d, type: 3}
   - {fileID: 1271097991817546194, guid: edef66ab4e9b0bc4bac31490671ff420, type: 3}
+  - {fileID: 1271097991817546194, guid: 758a1cc2076951a46adbe44057b6f07e, type: 3}
+  - {fileID: 1271097991817546194, guid: 585095af11a43de43b4c566843f9e050, type: 3}
   - {fileID: 1271097991817546194, guid: 2c75591fa9505294e919686332183a9b, type: 3}
+  - {fileID: 1271097991817546194, guid: 2f534e8f480bfe44b929993923677df8, type: 3}
+  - {fileID: 1271097991817546194, guid: b66c0cde409173745943dfaa107b848f, type: 3}
   - {fileID: 1271097991817546194, guid: 4d394f785b8181a4ea6c9b551faee07a, type: 3}
   - {fileID: 1271097991817546194, guid: 41c10e40da3acc64ea6b14e347e6881a, type: 3}
   - {fileID: 1271097991817546194, guid: a8c8b4a45e73eac4a8815a87713734a4, type: 3}
-  - {fileID: 1271097991817546194, guid: 9ef48c2c64081944eb441379b4c531d8, type: 3}
+  - {fileID: 1271097991817546194, guid: d89618958d853f040bb769127fc91e12, type: 3}
+  - {fileID: 1271097991817546194, guid: e50d96e8142c55f4681b1fbae89fd60f, type: 3}
   StartPlayerspeed: 5
   maxSpeed: 10
 --- !u!1 &333773069
@@ -2238,7 +2258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40289378, y: 0.32179156, z: -0.41919327, w: 0.74726427}
+  m_LocalRotation: {x: 0.42935744, y: -0.46305886, z: 0.22314359, w: 0.74258703}
   m_LocalPosition: {x: 0, y: 7.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4646,6 +4666,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 50207854}
+  - {fileID: 1580085317}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1543840612
@@ -4753,6 +4774,127 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1580085316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1580085317}
+  - component: {fileID: 1580085321}
+  - component: {fileID: 1580085320}
+  - component: {fileID: 1580085319}
+  - component: {fileID: 1580085318}
+  m_Layer: 0
+  m_Name: Terrain_0_0_c047343f-7e70-4206-9599-9ceb906cd155 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1580085317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580085316}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: -4.4, z: 994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1457112298}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1580085318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580085316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fccaf3f68543313469c72c7a5bbcfdee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backMovement: -7
+  isDead: 0
+  playerObject: {fileID: 0}
+--- !u!154 &1580085319
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580085316}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_TerrainData: {fileID: 15600000, guid: da979218e33cae8479b3d47755ce04f9, type: 2}
+  m_EnableTreeColliders: 1
+--- !u!114 &1580085320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580085316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34458a4fd1888554fb28f2b93f15cc2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!218 &1580085321
+Terrain:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580085316}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_TerrainData: {fileID: 15600000, guid: da979218e33cae8479b3d47755ce04f9, type: 2}
+  m_TreeDistance: 5000
+  m_TreeBillboardDistance: 50
+  m_TreeCrossFadeLength: 5
+  m_TreeMaximumFullLODCount: 50
+  m_DetailObjectDistance: 80
+  m_DetailObjectDensity: 1
+  m_HeightmapPixelError: 5
+  m_SplatMapDistance: 1000
+  m_HeightmapMaximumLOD: 0
+  m_ShadowCastingMode: 2
+  m_DrawHeightmap: 1
+  m_DrawInstanced: 1
+  m_DrawTreesAndFoliage: 1
+  m_StaticShadowCaster: 0
+  m_IgnoreQualitySettings: 0
+  m_ReflectionProbeUsage: 1
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_BakeLightProbesForTrees: 1
+  m_PreserveTreePrototypeLayers: 0
+  m_DeringLightProbesForTrees: 1
+  m_ReceiveGI: 1
+  m_ScaleInLightmap: 0.8
+  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
+  m_GroupingID: 0
+  m_RenderingLayerMask: 1
+  m_AllowAutoConnect: 1
+  m_EnableHeightmapRayTracing: 1
+  m_EnableTreesAndDetailsRayTracing: 0
+  m_TreeMotionVectorModeOverride: 3
 --- !u!1 &1613700761
 GameObject:
   m_ObjectHideFlags: 0
@@ -5797,8 +5939,8 @@ MonoBehaviour:
     loop: 1
     audioSource: {fileID: 0}
   - name: CoinSFX
-    audioClip: {fileID: 8300000, guid: dd4766596e65e2044bad8972a0558f20, type: 3}
-    volume: 0.2
+    audioClip: {fileID: 8300000, guid: 8ffadb2b91d7aa9459451529f63370fe, type: 3}
+    volume: 0.05
     loop: 0
     audioSource: {fileID: 0}
   - name: DeathSound

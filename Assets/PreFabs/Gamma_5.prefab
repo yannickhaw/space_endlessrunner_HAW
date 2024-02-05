@@ -1777,8 +1777,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: white rock line 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8444794308074252549, guid: e1169f05a1c082f4e860da593ecddcb8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.451
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444794308074252549, guid: e1169f05a1c082f4e860da593ecddcb8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.184
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444794308074252549, guid: e1169f05a1c082f4e860da593ecddcb8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7254282727243291022, guid: e1169f05a1c082f4e860da593ecddcb8, type: 3}
+    - {fileID: 3798496393739194899, guid: e1169f05a1c082f4e860da593ecddcb8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1169f05a1c082f4e860da593ecddcb8, type: 3}
