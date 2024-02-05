@@ -14,5 +14,12 @@ public class StartMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void ClearPlayerPrefs()
+    {
+       // Clear all player preferences
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("Startscreen");
+    }
         
 }
