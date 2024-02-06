@@ -36,7 +36,7 @@ public class PlayerMovement_v2 : MonoBehaviour
 
     // Schwellen fuer die Positionsaenderung - umso gruesser bzw. kleiner diese sind, desto schwieriger
     private float MovementThreshold = 0.05f;     // Schwelle fuer Seitwaertsbewegung
-    private float BendingThreshold = 0.86f;     // Schwelle fuer das Buecken (negative Werte, da Y-Position nach unten zunimmt)
+    private float BendingThreshold = 0.75f;     // Schwelle fuer das Buecken (negative Werte, da Y-Position nach unten zunimmt)
     private float JumpThreshold = 1.075f;          // Schwelle fuer das Erkennen eines Sprungs
 
     // Variablen fuer den aktuellen Zustand
@@ -243,9 +243,9 @@ public class PlayerMovement_v2 : MonoBehaviour
         float currentXPosition = basePosition.X;
         Debug.Log("Kinect X-Pos:  " + currentXPosition);
 
-        if (currentXPosition < 0.45f && currentXPosition > -0.45f)
+        if (currentXPosition < 0.57f && currentXPosition > -0.57f  && GameOverManager.gameOver == false)
         {
-            playerXcoordinate = 0.44f * currentXPosition;        //Seitliche Begrenzung in Unity geht von X = -2 bis X = 2
+            playerXcoordinate = 3.325f * currentXPosition;        //Seitliche Begrenzung in Unity geht von X = -2 bis X = 2 bzw 1.9 bis -1.9
             
             transform.position = new Vector3(playerXcoordinate, transform.position.y, transform.position.z);
 

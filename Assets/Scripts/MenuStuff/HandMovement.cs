@@ -13,7 +13,7 @@ public class KinectHandMovement : MonoBehaviour
     private KinectSensor _sensor;
     private BodyFrameReader _reader;
 
-    private float offsetX = 550f;
+    private float offsetX = 1250f;
     private float offsetY = 259f;
     private float scale = 1000f;
 
