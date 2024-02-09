@@ -4,27 +4,14 @@ using UnityEngine;
 
 public class DestroyPlatformScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-
-
+    // Diese Funktion wird aufgerufen wenn eine Plattform in den Trigger bereich (GameObject mit Tag "Destroy") eintritt (und wird dann zerstört)
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Destroy"))
+        if (other.gameObject.CompareTag("Destroy"))        
         {
-            Destroy(gameObject);
+            Destroy(gameObject);                    
         }
-
     }
 
 }

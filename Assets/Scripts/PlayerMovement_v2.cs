@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Windows.Kinect;
-using System.Threading.Tasks; // Hinzugefügt für Parallel
+using System.Threading.Tasks;       // Hinzugefügt für Parallel
 
 public class PlayerMovement_v2 : MonoBehaviour
 {
@@ -34,7 +34,7 @@ public class PlayerMovement_v2 : MonoBehaviour
     
     private float startYPositionHead;
 
-    // Schwellen fuer die Positionsaenderung - umso gruesser bzw. kleiner diese sind, desto schwieriger
+    // Schwellen fuer die Positionsaenderung - umso groesser bzw. kleiner diese sind, desto schwieriger
     private float MovementThreshold = 0.05f;     // Schwelle fuer Seitwaertsbewegung
     private float BendingThreshold = 0.75f;     // Schwelle fuer das Buecken (negative Werte, da Y-Position nach unten zunimmt)
     private float JumpThreshold = 1.075f;          // Schwelle fuer das Erkennen eines Sprungs
@@ -124,13 +124,13 @@ public class PlayerMovement_v2 : MonoBehaviour
 
        // rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, VHmovementSpeed);
         
-        if((Input.GetKey("left") || isMovingLeft) && GameOverManager.gameOver == false)
+        if((Input.GetKey("left") || Input.GetKey("a") || isMovingLeft) && GameOverManager.gameOver == false)
         {
             Debug.Log("Moving Left");
             GoLeft();
         }
 
-        if((Input.GetKey("right") || isMovingRight) && GameOverManager.gameOver == false)
+        if((Input.GetKey("right") || Input.GetKey("d") || isMovingRight) && GameOverManager.gameOver == false)
         {
             GoRight();
         }
@@ -140,7 +140,7 @@ public class PlayerMovement_v2 : MonoBehaviour
             Jump();
         }
 
-        if (((Input.GetKey("down") || isDucking) && IsGrounded()) && !slideCooldown && GameOverManager.gameOver == false)
+        if (((Input.GetKey("down") || Input.GetKey("s") || isDucking) && IsGrounded()) && !slideCooldown && GameOverManager.gameOver == false)
         {
             Slide();
         }
@@ -149,37 +149,23 @@ public class PlayerMovement_v2 : MonoBehaviour
     void GoLeft()
     {
         rb.velocity = new Vector3(LRmovementSpeed * -1, rb.velocity.y, rb.velocity.z);
-        /*
-        if (IsGrounded())
-        {
-            playerObject.GetComponent<Animator>().Play("Right Strafe");     //Adds animation for moving right
-        }
-        */
-        
     }
 
     void GoRight()
     {
         rb.velocity = new Vector3(LRmovementSpeed, rb.velocity.y, rb.velocity.z);
-        /*
-        if (IsGrounded())
-        {
-            playerObject.GetComponent<Animator>().Play("Left Strafe");        //Adds animation for moving right
-        }
-        */
         
     }
     void Jump()
     {
         FindObjectOfType<SoundManager>().PlaySound("JumpSFX");
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-        //playerObject.GetComponent<Animator>().Play("Jump");
         playerObject.GetComponent<Animator>().Play("Jump_start");
 
         if (capsuleCollider != null)
         {
-            // Set the new height and center
-            capsuleCollider.height = originalHeight;        //new height
+            // Set the new height and center for player hitbox/collider
+            capsuleCollider.height = originalHeight;                        //new height
             capsuleCollider.center = new Vector3(-0.0025f, -0.05f, 0f);     //new center
 
             // Start a coroutine to revert the changes after the specified duration
@@ -199,14 +185,11 @@ public class PlayerMovement_v2 : MonoBehaviour
         {
             slideCooldown = true;
             // Set the new height and center
-            capsuleCollider.height = 1.0f;        //new height
-            capsuleCollider.center = new Vector3(-0.0025f, -0.5f, -0.05f);     //new center
+            capsuleCollider.height = 1.0f;                                      //new height
+            capsuleCollider.center = new Vector3(-0.0025f, -0.5f, -0.05f);      //new center
 
             // Start a coroutine to revert the changes after the specified duration
-            
             StartCoroutine(RevertColliderProperties(0.75f)); 
-
-         
         }
     }
 
@@ -251,33 +234,6 @@ public class PlayerMovement_v2 : MonoBehaviour
 
             Debug.Log("Unity: Current X-Pos:   " + playerXcoordinate);
         }
-/////////////////////////
-/*
-         // Ueberpruefen ob die Aenderung der X-Position groeser ist als der Schwellenwert fuer seitliche Bewegungen
-        if (Mathf.Abs(currentXPosition - _previousXPosition) > MovementThreshold)
-        {
-            // Falls die X-Position zunimmt, setze den Bewegungsstatus nach rechts.
-            if (currentXPosition - _previousXPosition > 0)
-            {
-                isMovingRight = true;
-                isMovingLeft = false;
-                Debug.Log("Bewegt sich nach rechts-----");
-            }
-            // Falls die X-Position abnimmt, setze den Bewegungsstatus nach links.
-            else
-            {
-                isMovingLeft = true;
-                isMovingRight = false;
-                Debug.Log("-----Bewegt sich nach links");
-            }
-        }
-        // Wenn die Aenderung der X-Position unter dem Schwellenwert liegt, setze beide Bewegungsstatus zurueck.
-        else
-        {
-            isMovingLeft = false;
-            isMovingRight = false;
-        }
-*/
 
         _previousXPosition = currentXPosition;
     }

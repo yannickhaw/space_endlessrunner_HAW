@@ -7,12 +7,10 @@ public class GameOverMenu : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene("Space_Runner_Scene");
-        //Application.Quit();
     }
 
     public void HomeScreen()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        //Application.Quit();
     }
 }

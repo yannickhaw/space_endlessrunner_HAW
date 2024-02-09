@@ -6,9 +6,8 @@ public class WayPointFollower : MonoBehaviour
 {
     [SerializeField] GameObject[] waypoints;
     int currentWaypointIndex = 0;
-
-    [SerializeField] float min_speed = 1f;
-    [SerializeField] float max_speed = 2f;
+    public float min_speed = 1f;
+    public float max_speed = 2f;
 
     void Update()
     {
@@ -17,13 +16,13 @@ public class WayPointFollower : MonoBehaviour
         if(Vector3.Distance(transform.position, waypoints[currentWaypointIndex].transform.position) < .1f)
         {
             currentWaypointIndex++;
+
             if (currentWaypointIndex >= waypoints.Length)
             {
                 currentWaypointIndex = 0;
             }
-
         }
-        
+
         transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, randomspeed * Time.deltaTime);
     }
 }

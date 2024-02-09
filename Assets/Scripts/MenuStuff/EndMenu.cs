@@ -7,12 +7,10 @@ public class EndMenu : MonoBehaviour
     public void QuitGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
-        //Application.Quit();
     }
 
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        //Application.Quit();
     }
 }
