@@ -375,7 +375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fccaf3f68543313469c72c7a5bbcfdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
   playerObject: {fileID: 0}
 --- !u!1 &51761340 stripped
 GameObject:
@@ -1228,6 +1227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782b321648b166e4ca8cb7c2c5a8fb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreSection: {fileID: 1271097991817546194, guid: d1f948db067dd134091833a8b7b6976e, type: 3}
   StartSection: {fileID: 1271097991817546194, guid: bd86d7f91b6785f4a98d23e7e15ad52b, type: 3}
   WorldSections:
   - {fileID: 1271097991817546194, guid: b08007a666ea2ad43b35b3a0f67c30ae, type: 3}
@@ -1269,8 +1269,8 @@ MonoBehaviour:
   - {fileID: 1271097991817546194, guid: d89618958d853f040bb769127fc91e12, type: 3}
   - {fileID: 1271097991817546194, guid: e50d96e8142c55f4681b1fbae89fd60f, type: 3}
   StartPlayerspeed: 5
-  maxSpeed: 10
-  acceleration1: 0.035
+  maxSpeed: 20
+  acceleration1: 0.04
   acceleration2: 0.02
 --- !u!1 &333773069
 GameObject:
@@ -3604,6 +3604,7 @@ GameObject:
   - component: {fileID: 1009208943}
   - component: {fileID: 1009208945}
   - component: {fileID: 1009208946}
+  - component: {fileID: 1009208948}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3741,7 +3742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fccaf3f68543313469c72c7a5bbcfdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
   playerObject: {fileID: 51761340}
 --- !u!114 &1009208944
 MonoBehaviour:
@@ -3803,6 +3803,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   playerObject: {fileID: 51761340}
+--- !u!114 &1009208948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009208936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a08d7b2c8d86c4dac82e22b0da9abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1067513892
 GameObject:
   m_ObjectHideFlags: 0
@@ -4630,7 +4642,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fccaf3f68543313469c72c7a5bbcfdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
   playerObject: {fileID: 0}
 --- !u!154 &1580085319
 TerrainCollider:
@@ -5627,8 +5638,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: MainThemeMusic
-    audioClip: {fileID: 8300000, guid: ed433332bdb6bb344a852fdc68fb72b4, type: 3}
-    volume: 0.5
+    audioClip: {fileID: 8300000, guid: cc699a519a6c9604a9610409a8ca2377, type: 3}
+    volume: 0.99
     loop: 1
     audioSource: {fileID: 0}
   - name: CoinSFX

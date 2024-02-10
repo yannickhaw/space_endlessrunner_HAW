@@ -16,8 +16,8 @@ public class Endscore : MonoBehaviour
         //scoreUI.text = scoreText.ToString();
         if (GameOverManager.gameOver == false)
         {
-            currentEndScore += scorePerSecond * Time.deltaTime;
-
+            //currentEndScore += scorePerSecond * Time.deltaTime;
+            currentEndScore = Score_Trigger.score_count;
         }
         
         //scoreUI.text += scorePerSecond * Time.deltaTime;

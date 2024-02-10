@@ -26,9 +26,9 @@ public class GameOverManager : MonoBehaviour
         {
             Time.timeScale = 1;
             gameOverPanel.SetActive(true);
-            scoreBackground.SetActive(false);
-            CoinText.SetActive(false);
-            ScoreText.SetActive(false);
+            //scoreBackground.SetActive(false);
+            //CoinText.SetActive(false);
+            //ScoreText.SetActive(false);
         }
     }
 }

@@ -8,6 +8,9 @@ TagManager:
   - Destroy
   - EnemyObstacle
   - Coin
+  - Actors
+  - TrackingObject
+  - ScoreTrigger
   layers:
   - Default
   - TransparentFX

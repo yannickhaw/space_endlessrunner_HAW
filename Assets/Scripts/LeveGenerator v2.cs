@@ -6,6 +6,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     
+    public GameObject ScoreSection;
     public GameObject StartSection;
     public GameObject[] WorldSections;
     public float StartPlayerspeed;
@@ -64,6 +65,12 @@ public class LevelGenerator : MonoBehaviour
 
                 GameObject TempSection2 = Instantiate(WorldSections[RandomInt2], transform);
                 TempSection2.transform.position = new Vector3(0, 0, 75);
+
+                //Fuer Score Counter
+                GameObject TempScoreSection1  = Instantiate(ScoreSection, transform);      
+                TempScoreSection1.transform.position = new Vector3(0, 0, 2);
+                GameObject TempScoreSection2  = Instantiate(ScoreSection, transform);      
+                TempScoreSection2.transform.position = new Vector3(0, 0, 12);
 
            
                 Index = Index - 20f;            // Aktualisiere den Index für die nächste Überprüfung

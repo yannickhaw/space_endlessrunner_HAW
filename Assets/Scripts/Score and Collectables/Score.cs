@@ -27,6 +27,7 @@ public class Score : MonoBehaviour
         }
     }
 
+
     void Update()
     {
         // Erhöhe den Punktestand basierend auf der Zeit und der vorgegebenen Punkte pro Sekunde
@@ -37,8 +38,8 @@ public class Score : MonoBehaviour
         
         if(GameOverManager.gameOver == false)
         {
-            currentScore += scorePerSecond * Time.deltaTime;
-
+            //currentScore += scorePerSecond * Time.deltaTime;
+            currentScore = Score_Trigger.score_count;
         }
 
         else if (GameOverManager.gameOver == true && currentScore > PlayerPrefs.GetFloat("Highscore"))
