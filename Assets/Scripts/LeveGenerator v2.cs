@@ -6,89 +6,69 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     
-    public GameObject ScoreSection;
-    public GameObject StartSection;
-    public GameObject[] WorldSections;
-    public float StartPlayerspeed;
-    public float maxSpeed;
-    public float acceleration1 = 0.035f;
-    public float acceleration2 = 0.02f;
-    private float Index = 0;
-    public static bool CollisionIndex;
-
+    public GameObject ScoreSection;                                 // GameObject fuer ScoreSection
+    public GameObject StartSection;                                 // GameObject fuer StartSection
+    public GameObject[] WorldSections;                              // Array fuer die Random Level Sections
+    public float StartPlayerspeed;                                  // Startgeschwindigkeit des Spielers
+    public float maxSpeed;                                          // Bis zu dieser Geschwindigkeit des Spielers wird mit Beschleunigungswert 1 beschleunigt (danach mit Beschleunigungswert 2)
+    public float acceleration1 = 0.035f;                            // Beschleunigungswert 1
+    public float acceleration2 = 0.02f;                             // Beschleunigungswert 2
+    private float Index = 0;                                        // Index zur Überprüfung, wann neue Abschnitte generiert werden müssen
+    
     private void Start()
     {
-        
-        GameObject StartPlane1 = Instantiate(StartSection, transform);      // Instanziierung und Positionierung von 1 StartTile (so lang wie 3 noemale Tiles) und 4 random Tiles
+        // Erstellung des Startabschnitts
+        GameObject StartPlane1 = Instantiate(StartSection, transform);      // Startabschnitterstellung (so lang wie 3 normale Abschnitte)
         StartPlane1.transform.position = new Vector3(0, 0, -5);
-    
-        int RandomInt1 = Random.Range(0, WorldSections.Length);                         // Generiere zufällig ein Tile für den zweiten Abschnitt
 
-        GameObject TempSection1 = Instantiate(WorldSections[RandomInt1], transform);
-        TempSection1.transform.position = new Vector3(0, 0, 25);
-        
-        
-        int RandomInt2 = Random.Range(0, WorldSections.Length);                        // Generiere zufällig ein Tile für den dritten Abschnitt
-
-        GameObject TempSection2 = Instantiate(WorldSections[RandomInt2], transform);
-        TempSection2.transform.position = new Vector3(0, 0, 35);
-
-        int RandomInt3 = Random.Range(0, WorldSections.Length);                        // Generiere zufällig ein Tile für den vierten Abschnitt
-
-        GameObject TempSection3 = Instantiate(WorldSections[RandomInt3], transform);
-        TempSection3.transform.position = new Vector3(0, 0, 45);
-        
-        int RandomInt4 = Random.Range(0, WorldSections.Length);                        // Generiere zufällig ein Tile für den fuenften Abschnitt
-
-        GameObject TempSection4 = Instantiate(WorldSections[RandomInt4], transform);
-        TempSection4.transform.position = new Vector3(0, 0, 55);
+        // Erstellung von vier zufälligen Abschnitten nach dem Startabschnitt
+        for (int i = 0; i < 4; i++)
+        {
+            int RandomInt = Random.Range(0, WorldSections.Length);
+            GameObject TempSection = Instantiate(WorldSections[RandomInt], transform);
+            TempSection.transform.position = new Vector3(0, 0, 25 + i * 10);                // Positionierung der Sections in bestimmten Abständen (Abstand entspricht Laenge einer Section)
+        }
     }
 
     
     private void Update()
     {
-            // Bewege das GameObject nach hinten
-
-        if(GameOverManager.gameOver == false)
+    
+        if(GameOverManager.gameOver == false)                                                   // Überpruefe, ob das Spiel vorbei ist
         {
 
-            gameObject.transform.position += new Vector3(0, 0, -StartPlayerspeed * Time.deltaTime);
+            gameObject.transform.position += new Vector3(0, 0, -StartPlayerspeed * Time.deltaTime);     // Bewegung des Level-Generators in Richtung des Spielers
 
-            if(transform.position.z <= Index)                                                   // Wenn die Position auf der z-Achse den Index erreicht oder überschreitet
+            if(transform.position.z <= Index)                                                   // Überprüfe, ob der Indexwert erreicht wurde, um neue Abschnitte zu generieren
             {
-                int RandomInt1 = Random.Range(0, WorldSections.Length);                         // Generiere zufällig ein Tile 
+                // Generierung von zwei zufälligen Sections
+                for (int i = 0; i < 2; i++)
+                {
+                    int RandomInt = Random.Range(0, WorldSections.Length);
+                    GameObject TempSection = Instantiate(WorldSections[RandomInt], transform);
+                    TempSection.transform.position = new Vector3(0, 0, 65 + i * 10);            // Positionierung der Sections in bestimmten Abständen
+                }
 
-                GameObject TempSection1 = Instantiate(WorldSections[RandomInt1], transform);
-                TempSection1.transform.position = new Vector3(0, 0, 65);
-
-                int RandomInt2 = Random.Range(0, WorldSections.Length);                         // Generiere zufällig ein Tile
-
-                GameObject TempSection2 = Instantiate(WorldSections[RandomInt2], transform);
-                TempSection2.transform.position = new Vector3(0, 0, 75);
-
-                //Fuer Score Counter
-                GameObject TempScoreSection1  = Instantiate(ScoreSection, transform);      
-                TempScoreSection1.transform.position = new Vector3(0, 0, 2);
-                GameObject TempScoreSection2  = Instantiate(ScoreSection, transform);      
-                TempScoreSection2.transform.position = new Vector3(0, 0, 12);
-
+                // Erstellung von zwei Sections für den Score Counter (zählt Score hoch)
+                for (int i = 0; i < 2; i++)
+                {
+                    GameObject TempScoreSection = Instantiate(ScoreSection, transform);
+                    TempScoreSection.transform.position = new Vector3(0, 0, 2 + i * 10);        // Positionierung der Score-Section in bestimmten Abständen
+                }
            
                 Index = Index - 20f;            // Aktualisiere den Index für die nächste Überprüfung
             }
 
-        
-        if (StartPlayerspeed < maxSpeed)
-        {
-            StartPlayerspeed += acceleration1 * Time.deltaTime;    //Bestimmt die Geschwindigkeitserhöhung in der die Tiles auf den Player zukommen
+
+            if (StartPlayerspeed < maxSpeed)                           // Anpassung der Spielergeschwindigkeit basierend auf der Beschleunigung
+            {
+                StartPlayerspeed += acceleration1 * Time.deltaTime;    //Beschleunigungswert 1 --> Bestimmt die Geschwindigkeitserhöhung in der die Sections auf den Player zukommen (bzw. einfach Beschleunigung des Levels)
+            }
+            else
+            {
+                StartPlayerspeed += acceleration2 * Time.deltaTime;    //Beschleunigungswert 2 --> Beim erreichen einer bestimmten Geschwindigkeit, wird das Level nicht mehr ganz so schnell beschleunigt
+            }
+
         }
-        else
-        {
-            StartPlayerspeed += acceleration2 * Time.deltaTime;
-        }
-                
-        //Debug.Log("PlayerSpeed:  " + StartPlayerspeed);
-           
-        }
-        
     }
 }
