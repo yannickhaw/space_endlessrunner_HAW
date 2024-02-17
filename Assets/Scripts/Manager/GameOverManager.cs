@@ -4,31 +4,29 @@ using UnityEngine;
 
 public class GameOverManager : MonoBehaviour
 {
-    public static bool gameOver;
-    public GameObject gameOverPanel;
-    public GameObject scoreBackground;
+    public static bool gameOver;            // Statische Variable, die den Spielzustand speichert (ob das Spiel vorbei ist oder nicht)
+    public GameObject gameOverPanel;        // GameObject des Game Over-Panels (Game Over Screen (UI) nach Tod des Spielers)
+    public GameObject scoreBackground;      // GameObject des Hintergrunds für die Score-Anzeige (UI)
 
-    public GameObject ScoreText;
-    public GameObject CoinText;
+    public GameObject ScoreText;            // GameObject für den Score-Text (UI)
+    public GameObject CoinText;             // GameObject für den Münz-Text (UI)
     
-    
-    
-    // Start is called before the first frame update
-    void Start()
+    void Start()                            // Start wird beim ersten Frame aufgerufen
     {
-        gameOver = false;
+        gameOver = false;                   // Setzt den Spielzustand auf "nicht vorbei" beim Start
     }
 
-    // Update is called once per frame
-    void Update()
+    void Update()                           // Update wird einmal pro Frame aufgerufen
     {
-        if (gameOver)
+        if (gameOver)                       // Überprüft, ob das Spiel vorbei ist
         {
-            Time.timeScale = 1;
-            gameOverPanel.SetActive(true);
-            //scoreBackground.SetActive(false);
-            //CoinText.SetActive(false);
-            //ScoreText.SetActive(false);
+            Time.timeScale = 1;                 // Setzt die Zeit auf normal (um sicherzustellen, dass das Spiel in normaler Geschwindigkeit fortgesetzt wird)
+            gameOverPanel.SetActive(true);      // Aktiviert das Game Over-Panel, um es anzuzeigen (UI)
+            
+            //Deaktiviert die Score-Anzeige (UI) oben links
+            scoreBackground.SetActive(false);  
+            CoinText.SetActive(false);         
+            ScoreText.SetActive(false);         
         }
     }
 }

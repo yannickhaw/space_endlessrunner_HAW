@@ -1860,7 +1860,6 @@ MonoBehaviour:
   scoreUI: {fileID: 238927544}
   highscoreUI: {fileID: 45894953}
   highscoreUI2: {fileID: 1833972349}
-  scorePerSecond: 10
   Highscore: 0
 --- !u!114 &559631185
 MonoBehaviour:
@@ -1961,7 +1960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreUI: {fileID: 341373396}
-  scorePerSecond: 10
 --- !u!1 &570963538
 GameObject:
   m_ObjectHideFlags: 0
@@ -3600,7 +3598,6 @@ GameObject:
   - component: {fileID: 1009208939}
   - component: {fileID: 1009208938}
   - component: {fileID: 1009208947}
-  - component: {fileID: 1009208944}
   - component: {fileID: 1009208943}
   - component: {fileID: 1009208945}
   - component: {fileID: 1009208946}
@@ -3743,18 +3740,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 51761340}
---- !u!114 &1009208944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009208936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 638ba6c2141a46d44920810bfba1f57d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1009208945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3796,7 +3781,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LRmovementSpeed: 4
-  VHmovementSpeed: 0
   jumpForce: 6
   groundCheck: {fileID: 1906505319}
   ground:
@@ -3831,7 +3815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1067513893
 MonoBehaviour:
   m_ObjectHideFlags: 0

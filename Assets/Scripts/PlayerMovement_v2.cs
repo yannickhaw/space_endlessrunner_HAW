@@ -1,60 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Windows.Kinect;
-using System.Threading.Tasks;       // Hinzugefügt für Parallel
+using Windows.Kinect;               // Windows.Kinect für Kinect-Integration
+using System.Threading.Tasks;       // Fuer parallele Verarbeitungsaufgaben
 
 public class PlayerMovement_v2 : MonoBehaviour
 {
 
-    Rigidbody rb;
-    [SerializeField] float LRmovementSpeed = 5f;
-    [SerializeField] float VHmovementSpeed = 0f;                     // Vorne / Hinten Movement Speed
-    [SerializeField] float jumpForce = 5f;
+    Rigidbody rb;                                       // Rigidbody-Komponente des Spielers
+    [SerializeField] float LRmovementSpeed = 5f;        // Seitwärtsbewegungsgeschwindigkeit
+    [SerializeField] float jumpForce = 5f;              // Sprungkraft
 
-    [SerializeField] Transform groundCheck;
-    [SerializeField] LayerMask ground;
-    [SerializeField]
-    public GameObject playerObject;
+    [SerializeField] Transform groundCheck;             // Referenz um zu prüfen, ob der Spieler auf dem Boden ist
+    [SerializeField] LayerMask ground;                  // Referenz für Layer (hier: Ground) 
+    [SerializeField] GameObject playerObject;           // Referenz für Animation des Spielers
 
-    private CapsuleCollider capsuleCollider;    // Reference to the Capsule Collider component
+    private CapsuleCollider capsuleCollider;            // Referenz für die HitBox des Spielers (Capsule förmig)
     
-    // Original values of the Capsule Collider properties
+    // Original Werte der Spieler Hitbox
     private Vector3 originalCenter;
     private float originalHeight;
 
     private float playerXcoordinate = 0;    // In-Game X-Koordinate
 
-    private KinectSensor _sensor;
-    private BodyFrameReader _reader;
-    private Body[] _Data;
+    private KinectSensor _sensor;           // Kinect-Sensorobjekt
+    private BodyFrameReader _reader;        // BodyFrameReader für die Verarbeitung von Körperdaten
+    private Body[] _Data;                   // Array zur Speicherung von Körperdaten
+
 
     // Variablen fuer die Gelenkpositionen - speichert immer die vorherigen Positionen
-    private float _previousXPosition;
-    
-    private float startYPositionHead;
+    private float _previousXPosition;       // Speichert Vorherige X-Position für Seitwärtsbewegung
+    private float startYPositionHead;       // Start Y-Position des Kopfes
 
     // Schwellen fuer die Positionsaenderung - umso groesser bzw. kleiner diese sind, desto schwieriger
-    private float MovementThreshold = 0.05f;     // Schwelle fuer Seitwaertsbewegung
-    private float BendingThreshold = 0.75f;     // Schwelle fuer das Buecken (negative Werte, da Y-Position nach unten zunimmt)
-    private float JumpThreshold = 1.075f;          // Schwelle fuer das Erkennen eines Sprungs
+    private float MovementThreshold = 0.05f;    // Schwelle fuer Seitwaertsbewegung
+    private float BendingThreshold = 0.75f;     // Schwelle fuer das Ducken
+    private float JumpThreshold = 1.075f;       // Schwelle fuer das Erkennen eines Sprungs
 
-    // Variablen fuer den aktuellen Zustand
+    // Zustandsvariablen fuer  Bewegungen
     public static bool isJumping = false;
     public static bool isMovingLeft = false;
     public static bool isMovingRight = false;
     public static bool isDucking = false; 
 
 
-    public static bool slideCooldown = false;
-    // Definiere die Gelenktypen fuer den SpineBase (Rumpf), Kopf, linken Fuss und rechten Fuss
-    JointType spineBase = JointType.SpineBase;
-    JointType head = JointType.Head;
+    public static bool slideCooldown = false;       // Cooldown für das Ducken 
+
+    JointType spineBase = JointType.SpineBase;      // Hueft-/Rumpfgelenk
+    JointType head = JointType.Head;                // Kopfgelenk
 
     bool headStart = true;
 
-    // Start wird beim ersten Frame aufgerufen
-    void Start()
+    void Start()                                // Start wird beim ersten Frame aufgerufen
     {
         rb = GetComponent<Rigidbody>();
 
@@ -119,10 +116,10 @@ public class PlayerMovement_v2 : MonoBehaviour
         // Reset horizontal velocity when neither left nor right key is pressed
         if ((!Input.GetKey("left") && !Input.GetKey("right")) || (!isMovingRight && !isMovingLeft))
         {
-            rb.velocity = new Vector3(rb.velocity.x * 0.9f, verticalVelocity, VHmovementSpeed);
+            rb.velocity = new Vector3(rb.velocity.x * 0.9f, verticalVelocity, 0);
         }
 
-       // rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, VHmovementSpeed);
+       // rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 0);
         
         if((Input.GetKey("left") || Input.GetKey("a") || isMovingLeft) && GameOverManager.gameOver == false)
         {

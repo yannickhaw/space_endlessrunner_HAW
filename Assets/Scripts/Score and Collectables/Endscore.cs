@@ -4,32 +4,21 @@ using TMPro;
 
 public class Endscore : MonoBehaviour
 {
-  //  public Text scoreText;                          // Hier fügst du das Text-Objekt hinzu, das deinen Punktestand anzeigt
-    public TextMeshProUGUI scoreUI;
+    public TextMeshProUGUI scoreUI;                    // Hier wird das Text-Objekt hinzugefügt, das den Score anzeigt
+    private float currentEndScore = 0f;                // Aktueller End-Score
 
-    public float scorePerSecond = 10f;                // Punktestand pro Sekunde
-    private float currentEndScore = 0f;
-
-    void Update()
+    void Update()                                      // Update wird einmal pro Frame aufgerufen
     {
-        // Erhöhe den Punktestand basierend auf der Zeit und der vorgegebenen Punkte pro Sekunde
-        //scoreUI.text = scoreText.ToString();
-        if (GameOverManager.gameOver == false)
+        if (GameOverManager.gameOver == false)          // Überprüft, ob das Spiel noch nicht vorbei ist
         {
-            //currentEndScore += scorePerSecond * Time.deltaTime;
-            currentEndScore = Score_Trigger.score_count;
+            currentEndScore = Score_Trigger.score_count;    // Aktualisierung des End-Scores aus einer anderen Quelle
         }
-        
-        //scoreUI.text += scorePerSecond * Time.deltaTime;
-        // Aktualisiere den angezeigten Punktestand im Text-Objekt
-        UpdateScoreText();
+
+        UpdateScoreText();                              // Aktualisierung des Scores
     }
 
-    void UpdateScoreText()
+    void UpdateScoreText()                              // Funktion zum Aktualisieren des angezeigten Score im Text-Objekt
     {
-        // Zeige den Punktestand im Text-Objekt an
-        
-        scoreUI.text = "" + Mathf.Round(currentEndScore).ToString() + "m";
-
+        scoreUI.text = "" + Mathf.Round(currentEndScore).ToString() + "m";      // Zeigt den Score im Text-Objekt an
     }
 }
