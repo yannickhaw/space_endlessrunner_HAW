@@ -11,7 +11,7 @@ public class CoinCollector : MonoBehaviour
     int coincount = 0;                                  // Aktueller Münz-Score
     int totalcoins;                                     // insgesamt gesammelte Münzen
 
-    void Start()
+    void Start()        // Start wird beim ersten Frame aufgerufen
     {
         if(PlayerPrefs.HasKey("TotalCoins"))                // Überprüft, ob die Anzahl der insgesamt gesammelten Münzen bereits in den Spieler Präferenzen gespeichert ist
         {

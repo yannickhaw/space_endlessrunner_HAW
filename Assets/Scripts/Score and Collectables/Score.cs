@@ -10,7 +10,7 @@ public class Score : MonoBehaviour
     private float currentScore = 0f;            // Aktueller Spiel-Score
     public float Highscore;                     // Aktueller Highscore
 
-    void Start()
+    void Start()        // Start wird beim ersten Frame aufgerufen
     {
         if(PlayerPrefs.HasKey("Highscore"))                 // Überprüft, ob bereits ein Highscore-Wert in den Spieler-Präferenzen gespeichert ist
         {
@@ -23,7 +23,7 @@ public class Score : MonoBehaviour
     }
 
 
-    void Update()
+    void Update()        // Update wird einmal pro Frame aufgerufen 
     {
         highscoreUI2.text = "Best: " + Mathf.Round(Highscore).ToString() + "m";     // zeigt Highscore während des Spiels an
         

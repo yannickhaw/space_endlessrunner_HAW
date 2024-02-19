@@ -5,21 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
-    public void StartGame()
+    public void StartGame()                         // wird aufgerufen, wenn der "PLAY"-Button gedrückt wird
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);        // Startet das Spiel
     }
 
-    public void QuitGame()
+    public void QuitGame()                          // Wird aufgerufen, wenn der "Exit Game" Button gedrückt wird
     {
-        Application.Quit();
+        Application.Quit();                         // Beendet das Programm/Anwendung
     }
 
-    public void ClearPlayerPrefs()
+    public void ClearPlayerPrefs()                  // Wird aufgerufen, wenn der "Clear Prefs" Button gedrückt wird
     {
-       // Clear all player preferences
-        PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene("Startscreen");
+        PlayerPrefs.DeleteAll();                    // Löscht alle Spielerpräferenzen
+        SceneManager.LoadScene("Startscreen");      // Lädt Startszene neu
     }
         
 }

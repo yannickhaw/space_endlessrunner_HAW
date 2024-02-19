@@ -6,19 +6,20 @@ using System.Collections.Generic;
 
 public class KinectHandMovement : MonoBehaviour
 {
-    public RawImage cursor;
-    public Button playButton; // Reference to your PlayButton
-    public Button quitButton;
+    public RawImage cursor;         // Referenz auf das RawImage-Objekt, das den Cursor darstellt (Cursor-png)
+    public Button playButton;       // Referenz auf den Play-Button (UI)
+    public Button quitButton;       // Referenz auf den Quit-Button (UI)
 
-    private KinectSensor _sensor;
-    private BodyFrameReader _reader;
+    private KinectSensor _sensor;   // Referenz auf den Kinect-Sensor
+    private BodyFrameReader _reader; // Referenz auf den BodyFrameReader, um die Körperdaten zu lesen
 
-    private float offsetX = 1250f;
-    private float offsetY = 259f;
-    private float scale = 1000f;
+    private float offsetX = 1250f;  // X-Offset zur Positionierung des Cursors auf dem Bildschirm
+    private float offsetY = 259f;   // Y-Offset zur Positionierung des Cursors auf dem Bildschirm
+    private float scale = 1000f;    // Skalierungsfaktor zur Anpassung der Handposition auf dem Bildschirm
 
     void Start()
     {
+        //Initialisiert dn Kinect-Sensor
         _sensor = KinectSensor.GetDefault();
 
         if (_sensor != null)
@@ -43,24 +44,26 @@ public class KinectHandMovement : MonoBehaviour
                     {
                         if (body.IsTracked)
                         {
+                            // Erhalte die Position der rechten Hand des Benutzers
                             Windows.Kinect.Joint handJoint = body.Joints[JointType.HandRight];
                             CameraSpacePoint handPosition = handJoint.Position;
 
+                            // Konvertiert die 3D-Handposition in die Unity-Koordinaten
                             Vector3 unityHandPosition = new Vector3((handPosition.X * scale + offsetX), (handPosition.Y * scale + offsetY), 0);
 
-                            // Setze die Cursor-Position direkt auf die Hand-Position
+                            // Setzt die Cursor-Position direkt auf die Hand-Position
                             cursor.rectTransform.position = unityHandPosition;
 
-                            // Überprüfe, ob der Cursor den Collider des PlayButtons berührt
+                            // Überprüft, ob der Cursor den Collider des PlayButtons berührt
                             if (playButton != null && IsCursorOverButton(unityHandPosition, playButton))
                             {
-                                // Klicke den PlayButton
+                                // Klickt den PlayButton
                                 ClickPlayButton();
                             }
 
                             if (quitButton != null && IsCursorOverButton(unityHandPosition, quitButton))
                             {
-                                // Klicke den QuitButton
+                                // Klickt den QuitButton
                                 ClickQuitButton();
                             }
                         }
@@ -70,36 +73,36 @@ public class KinectHandMovement : MonoBehaviour
         }
     }
 
-    void OnApplicationQuit()
+    void OnApplicationQuit()                    // wird ausgeführt, wenn das das Spiel geschlossen wird
     {
-        if (_sensor != null)
+        if (_sensor != null)                    
         {
-            _sensor.Close();
+            _sensor.Close();                    // schaltet die Kinect aus, wenn sie eingeschaltet ist
         }
     }
 
-    // Überprüfe, ob der Cursor den Button berührt
+    // Überprüft, ob der Cursor den Button berührt
     private bool IsCursorOverButton(Vector3 cursorPosition, Button button)
     {
-        // Erzeuge einen Raycast von der Cursor-Position in die Szene
+        // Erzeugt einen Raycast von der Cursor-Position in die Szene
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = cursorPosition;
 
-        // Überprüfe, ob ein UI-Element unter dem Cursor liegt
+        // Überprüft, ob ein UI-Element unter dem Cursor liegt
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
 
-        // Überprüfe, ob der Button unter den Ergebnissen ist
+        // Überprüft, ob der Button unter den Ergebnissen ist
         return results.Exists(result => result.gameObject == button.gameObject);
     }
 
-    // Funktion zum Klicken des PlayButtons
-    private void ClickPlayButton()
+
+    private void ClickPlayButton()      // Funktion zum Klicken des PlayButtons
     {
         playButton.onClick.Invoke();
     }
 
-    private void ClickQuitButton()
+    private void ClickQuitButton()      // Methode zum Klicken des Quit-Buttons
     {
         quitButton.onClick.Invoke();
     }

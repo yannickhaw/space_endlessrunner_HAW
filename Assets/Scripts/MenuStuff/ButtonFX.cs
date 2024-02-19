@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class ButtonFX : MonoBehaviour
 {
-    public AudioSource myFx;
-    public AudioClip hoverFx;
-    public AudioClip clickFx;
+    public AudioSource myFx;   // Referenz auf die AudioSource-Komponente, die die Soundeffekte abspielen soll
+    public AudioClip hoverFx;  // Soundeffekt, der beim Hovern über den Button abgespielt werden soll
+    public AudioClip clickFx;  // Soundeffekt, der beim Klicken auf den Button abgespielt werden soll
 
-    public void HoverSound()
+    public void HoverSound()               // wird aufgerufen, wenn der Mauszeiger über den Button bewegt wird
     {
-        myFx.PlayOneShot(hoverFx);
+        myFx.PlayOneShot(hoverFx);         // Spielt den Hover-Soundeffekt einmal ab
     }
 
-    public void ClickSound()
+    public void ClickSound()               // wird aufgerufen, wenn der Button geklickt wird
     {
-        myFx.PlayOneShot(clickFx);
+        myFx.PlayOneShot(clickFx);         // Spielt den Click-Soundeffekt einmal ab
     }
 }

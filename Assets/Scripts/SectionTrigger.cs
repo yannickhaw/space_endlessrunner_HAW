@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class SectionTrigger : MonoBehaviour
 {
    public GameObject marsRoadSection;
@@ -15,3 +15,4 @@ public class SectionTrigger : MonoBehaviour
         }
    }
 }
+*/
