@@ -1156,7 +1156,7 @@ MonoBehaviour:
   - {fileID: 1271097991817546194, guid: d89618958d853f040bb769127fc91e12, type: 3}
   - {fileID: 1271097991817546194, guid: e50d96e8142c55f4681b1fbae89fd60f, type: 3}
   StartPlayerspeed: 5
-  maxSpeed: 20
+  maxSpeed: 13
   acceleration1: 0.04
   acceleration2: 0.02
 --- !u!1 &333773069
@@ -2242,12 +2242,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1457112298}
   - {fileID: 326770521}
   - {fileID: 829015545}
   - {fileID: 1334867313}
   - {fileID: 510985188}
   - {fileID: 966370218}
-  - {fileID: 1457112298}
   - {fileID: 409683056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

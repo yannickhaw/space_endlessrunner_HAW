@@ -37,14 +37,14 @@ public class PlayerMovement_v2 : MonoBehaviour
     private float BendingThreshold = 0.75f;     // Schwelle fuer das Ducken
     private float JumpThreshold = 1.075f;       // Schwelle fuer das Erkennen eines Sprungs
 
-    // Zustandsvariablen fuer  Bewegungen
+    // Zustandsvariablen fuer  Bewegungen (Kinect)
     public static bool isJumping = false;
     public static bool isMovingLeft = false;
     public static bool isMovingRight = false;
     public static bool isDucking = false; 
 
 
-    public static bool slideCooldown = false;       // Cooldown für das Ducken 
+    public static bool slideCooldown = false;       // Cooldown Variable für das Ducken 
 
     JointType spineBase = JointType.SpineBase;      // Hueft-/Rumpfgelenk
     JointType head = JointType.Head;                // Kopfgelenk
@@ -53,13 +53,13 @@ public class PlayerMovement_v2 : MonoBehaviour
 
     void Start()                                // Start wird beim ersten Frame aufgerufen
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();                         // Initialisierung des Rigidbody
 
-        capsuleCollider = GetComponent<CapsuleCollider>();
+        capsuleCollider = GetComponent<CapsuleCollider>();       // Initialisierung der Spielr Hitbox
 
+        // Speichern der Originalwerte des Hitbox
         if (capsuleCollider != null)
         {
-            // Store the original capsuleCollider values
             originalCenter = capsuleCollider.center;
             originalHeight = capsuleCollider.height;
         }
@@ -68,6 +68,8 @@ public class PlayerMovement_v2 : MonoBehaviour
             Debug.LogError("Capsule Collider component not found on the player GameObject.");
         }
 
+
+        // Initialisierung des Kinect-Sensors
         _sensor = KinectSensor.GetDefault();
 
         if (_sensor != null)
@@ -88,7 +90,7 @@ public class PlayerMovement_v2 : MonoBehaviour
     void Update()
     {
         
-        float verticalVelocity = rb.velocity.y;
+        float verticalVelocity = rb.velocity.y;                     // Vertikale Geschwindigkeit des Spielers (Springen)
 
         if (_reader != null)
         {
@@ -99,7 +101,7 @@ public class PlayerMovement_v2 : MonoBehaviour
                 frame.GetAndRefreshBodyData(_Data);
 
 
-                // Parallelisiere die Verarbeitung der Body-Daten
+                // Parallelisierung der Verarbeitung der Body-Daten
                 Parallel.ForEach(_Data, body =>
                 {
                     if (body != null && body.IsTracked)
@@ -113,7 +115,7 @@ public class PlayerMovement_v2 : MonoBehaviour
             }
         }
 
-        // Reset horizontal velocity when neither left nor right key is pressed
+       // Zurücksetzen der horizontalen Geschwindigkeit, wenn keine Bewegungstasten gedrückt werden bzw. keine links rechts Bewegung stattfindet
         if ((!Input.GetKey("left") && !Input.GetKey("right")) || (!isMovingRight && !isMovingLeft))
         {
             rb.velocity = new Vector3(rb.velocity.x * 0.9f, verticalVelocity, 0);
@@ -123,119 +125,105 @@ public class PlayerMovement_v2 : MonoBehaviour
         
         if((Input.GetKey("left") || Input.GetKey("a") || isMovingLeft) && GameOverManager.gameOver == false)
         {
-            Debug.Log("Moving Left");
-            GoLeft();
+            GoLeft();                                                                                                        // Bewegung nach links
         }
 
         if((Input.GetKey("right") || Input.GetKey("d") || isMovingRight) && GameOverManager.gameOver == false)
         {
-            GoRight();
+            GoRight();                                                                                                       // Bewegung nach links
         }
 
         if (((Input.GetButtonDown("Jump") || isJumping) && IsGrounded()) && GameOverManager.gameOver == false)
         {
-            Jump();
+            Jump();                                                                                                          // Springen
         }
 
         if (((Input.GetKey("down") || Input.GetKey("s") || isDucking) && IsGrounded()) && !slideCooldown && GameOverManager.gameOver == false)
         {
-            Slide();
+            Slide();                                                                                                        // Ducken/Rutschen
         }
     }
     
-    void GoLeft()
+    void GoLeft()                                                                           // Funktion für die Bewegung nach links
     {
         rb.velocity = new Vector3(LRmovementSpeed * -1, rb.velocity.y, rb.velocity.z);
     }
 
-    void GoRight()
+    void GoRight()                                                                          // Funktion für die Bewegung nach rechts
     {
         rb.velocity = new Vector3(LRmovementSpeed, rb.velocity.y, rb.velocity.z);
         
     }
-    void Jump()
+    void Jump()                                                                             // Funktion für den Sprung
     {
-        FindObjectOfType<SoundManager>().PlaySound("JumpSFX");
-        rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-        playerObject.GetComponent<Animator>().Play("Jump_start");
+        FindObjectOfType<SoundManager>().PlaySound("JumpSFX");                              // Soundeffekt für den Sprung abspielen
+        rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);                 // Anwenden der Sprungkraft
+        playerObject.GetComponent<Animator>().Play("Jump_start");                           // Abspielen der Sprunganimation
 
         if (capsuleCollider != null)
         {
-            // Set the new height and center for player hitbox/collider
-            capsuleCollider.height = originalHeight;                        //new height
-            capsuleCollider.center = new Vector3(-0.0025f, -0.05f, 0f);     //new center
+            // Setzen der neuen Höhe und Zentrum für die Spieler Hitbox/collider
+            capsuleCollider.height = originalHeight;                        // Neue Höhe
+            capsuleCollider.center = new Vector3(-0.0025f, -0.05f, 0f);     // Neues Zentrum
 
-            // Start a coroutine to revert the changes after the specified duration
-            StartCoroutine(RevertColliderProperties(1.1f));  
+            StartCoroutine(RevertColliderProperties(1.1f));                 // Starten einer Coroutine zum Rückgängigmachen der Änderungen nach einer bestimmten Dauer (nach Ende des 1,1s cooldowns) 
         }
     }
     
 
-    void Slide()
+    void Slide()                                                                // Funktion für das Rutschen
     {
-        //FindObjectOfType<SoundManager>().PlaySound("JumpSFX");
-        //rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-        //playerObject.GetComponent<Animator>().Play("Jump");
-        playerObject.GetComponent<Animator>().Play("Flip");
+        playerObject.GetComponent<Animator>().Play("Flip");                     // Abspielen der Slide-Animation
 
         if (capsuleCollider != null)
         {
-            slideCooldown = true;
-            // Set the new height and center
-            capsuleCollider.height = 1.0f;                                      //new height
-            capsuleCollider.center = new Vector3(-0.0025f, -0.5f, -0.05f);      //new center
+            slideCooldown = true;                                               // Slide Cooldown wird aktiviert
 
-            // Start a coroutine to revert the changes after the specified duration
-            StartCoroutine(RevertColliderProperties(0.75f)); 
+            // Setzen der neuen Höhe und Zentrum für die Spieler Hitbox/collider
+            capsuleCollider.height = 1.0f;                                      // Neue Höhe
+            capsuleCollider.center = new Vector3(-0.0025f, -0.5f, -0.05f);      // Neues Zentrum
+
+            StartCoroutine(RevertColliderProperties(0.75f));                    // Starten einer Coroutine zum Rückgängigmachen der Änderungen nach einer bestimmten Dauer (nach Ende des 0,75s cooldowns)
         }
     }
 
-    private IEnumerator RevertColliderProperties(float duration)
+    private IEnumerator RevertColliderProperties(float duration)                // Coroutine zum Rückgängigmachen der Hitbox-Eigenschaften
     {
-        
-        
-        // Wait for the specified duration
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(duration);                              // Warten für die angegebene Dauer
 
-        slideCooldown = false;
+        slideCooldown = false;                                                  // Zurücksetzen des Slide-Cooldowns
         
-        capsuleCollider.height = originalHeight;
-        capsuleCollider.center = originalCenter;
-
-
-        
-        
+        // Wiederherstellen der Ursprungswerte der Hitbox
+        capsuleCollider.height = originalHeight;                                
+        capsuleCollider.center = originalCenter;                                
     }
 
 
-    bool IsGrounded()
+    bool IsGrounded()                                                           // Überprüfung, ob der Spieler den Boden berührt
     {
-       return Physics.CheckSphere(groundCheck.position, .1f, ground);
+       return Physics.CheckSphere(groundCheck.position, .1f, ground);          
     } 
 
 
-   // Ueberwacht die links und rechts Bewegung
+   // Überwacht die links und rechts Bewegung
     void horizontalMovement(Body body)
     {
         // Erhalte die Positionen des Gelenkes des Koerpers aus dem Kinect-Body-Objekt
         CameraSpacePoint basePosition = body.Joints[spineBase].Position;
         // aktuelle X-Position des Gelenks
         float currentXPosition = basePosition.X;
-        Debug.Log("Kinect X-Pos:  " + currentXPosition);
 
         if (currentXPosition < 0.57f && currentXPosition > -0.57f  && GameOverManager.gameOver == false)
         {
             playerXcoordinate = 3.325f * currentXPosition;        //Seitliche Begrenzung in Unity geht von X = -2 bis X = 2 bzw 1.9 bis -1.9
             
             transform.position = new Vector3(playerXcoordinate, transform.position.y, transform.position.z);
-
-            Debug.Log("Unity: Current X-Pos:   " + playerXcoordinate);
         }
 
         _previousXPosition = currentXPosition;
     }
 
-    /// Ueberwacht das Springen und Ducken
+    // Überwachung der vertikalen Bewegung (also Spriinge und Ducken) basierend auf den Kinect-Daten
     void verticalMovement(Body body)
     {
         // Erhalte die Positionen des Gelenks des Koerpers aus dem Kinect-Body-Objekt
@@ -243,34 +231,28 @@ public class PlayerMovement_v2 : MonoBehaviour
 
         // aktuelle Y-Positionen des Gelenks
         float currentYPositionHead = headPosition.Y;
-        //Debug.Log("Y-Head-Pos  " + currentYPositionHead);
+        
         if(headStart == true)
         {
-            //Debug.Log("wird ausgelöst");
-            startYPositionHead = headPosition.Y;
-            //Debug.Log("startY:   " + startYPositionHead);
+            startYPositionHead = headPosition.Y;                // Speichern der Start-Y-Position für den Kopf
             headStart = false;
         }
 
-        // Variable fuer die Differenz der Position
+        // Berechnung der Änderung der Kopfposition
         float headChange = currentYPositionHead - startYPositionHead;
-        //Debug.Log("Headchange  " + headChange);
-
-        // Ueberprueft ob sich die Y-Position des SpineBase-Gelenks oder der Fuesse ausreichend aendert
+       
+        // Überprüfung auf Sprung oder Ducken basierend auf der Kopfposition
         if (currentYPositionHead > startYPositionHead * JumpThreshold)
         {
             // Hier wird der Sprungstatus geaendert
             isJumping = true;
             isDucking = false;
-            //Debug.Log("springt: " + headChange);
         }
-        // Ueberpruefe, ob sich die Y-Position des Kopfes nach unten aendert
         else if (currentYPositionHead < startYPositionHead * BendingThreshold)
         {
             // Hier wird der Ducken-Status geaendert
             isDucking = true;
             isJumping = false;
-            //Debug.Log("duckt sich: " + headChange);
         }
         else
         {
@@ -280,7 +262,7 @@ public class PlayerMovement_v2 : MonoBehaviour
         }
     }
 
-    // Wird aufgerufen, wenn die Anwendung beendet wird
+    // Wird aufgerufen, wenn die Anwendung beendet wird (Kinect wird beendet)
     void OnApplicationQuit()
     {
         if (_reader != null)

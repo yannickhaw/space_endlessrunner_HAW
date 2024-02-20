@@ -62,9 +62,6 @@ public class LevelGenerator : MonoBehaviour
                 }
                 
                 Debug.Log("PosZ:  " + transform.position.z);
-                Debug.Log("Index:  " + Index);
-
-
                 Index = Index - 20f;            // Aktualisiere den Index für die nächste Überprüfung
                 Debug.Log("Index2:  " + Index);
             }
