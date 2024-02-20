@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    
+    public GameObject TerrainSection;                               // GameObject fuer das Terrain
     public GameObject ScoreSection;                                 // GameObject fuer ScoreSection
     public GameObject StartSection;                                 // GameObject fuer StartSection
     public GameObject[] WorldSections;                              // Array fuer die Random Level Sections
@@ -14,9 +14,14 @@ public class LevelGenerator : MonoBehaviour
     public float acceleration1 = 0.035f;                            // Beschleunigungswert 1
     public float acceleration2 = 0.02f;                             // Beschleunigungswert 2
     private float Index = 0;                                        // Index zur Überprüfung, wann neue Abschnitte generiert werden müssen
+    private float IndexTerrain = 0; 
     
     private void Start()
     {
+        //Erstellung des Terrain
+        GameObject Terrain = Instantiate(TerrainSection, transform);      // Terrainerstellung (so lang wie 100 normale Abschnitte)
+        Terrain.transform.position = new Vector3(-434, -5, -5);
+        
         // Erstellung des Startabschnitts
         GameObject StartPlane1 = Instantiate(StartSection, transform);      // Startabschnitterstellung (so lang wie 3 normale Abschnitte)
         StartPlane1.transform.position = new Vector3(0, 0, -5);
@@ -55,10 +60,25 @@ public class LevelGenerator : MonoBehaviour
                     GameObject TempScoreSection = Instantiate(ScoreSection, transform);
                     TempScoreSection.transform.position = new Vector3(0, 0, 2 + i * 10);        // Positionierung der Score-Section in bestimmten Abständen
                 }
-           
+                
+                Debug.Log("PosZ:  " + transform.position.z);
+                Debug.Log("Index:  " + Index);
+
+
                 Index = Index - 20f;            // Aktualisiere den Index für die nächste Überprüfung
+                Debug.Log("Index2:  " + Index);
             }
 
+            if(transform.position.z <= IndexTerrain)
+            {
+                GameObject Terrain = Instantiate(TerrainSection, transform);
+                Terrain.transform.position = new Vector3(-434, -5, 995);
+
+                Debug.Log("spawn terrain:  " + transform.position.z);
+                Debug.Log("IndexTerrain:  " + IndexTerrain);
+
+                IndexTerrain = IndexTerrain - 1000;
+            }
 
             if (StartPlayerspeed < maxSpeed)                           // Anpassung der Spielergeschwindigkeit basierend auf der Beschleunigung
             {
