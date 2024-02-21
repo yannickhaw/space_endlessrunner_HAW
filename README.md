@@ -1,6 +1,6 @@
 # Anleitung zum Öffnen des Unity-Projekts SPACE RUNNER
 
-Hier eine kurze Anleizung um das Projekt zu öffnen
+Hier eine kurze Anleitung, um das Projekt zu öffnen
 
 ## Schritt 1: Herunterladen und Installation des Unity Hub (falls noch nicht vorhanden)
 
