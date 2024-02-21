@@ -10,6 +10,9 @@ Stellen Sie sicher, dass Unity Hub heruntergeladen und installiert ist. Der Unit
 
 Öffnen Sie Unity Hub und navigieren Sie zum Tab "Installs". Hier kann nach der benötigten Unity-Version gesucht und diese heruntergeladen werden, falls sie noch nicht installiert ist. Für dieses Projekt wird die Unity-Version 2022.3.13f1 benötigt.
 
+Falls diese Unity Version nicht mehr gelistet ist, später probieren das Projekt einfach trotzdem zu öffnen (man wird in der Regel weitergeleitet die richtige/fehlende Version zu installieren), ansonsten ist hier eine alternative Lösung: https://support.unity.com/hc/en-us/articles/4402520309908-How-do-I-add-a-version-of-Unity-that-does-not-appear-in-the-Hub-installs-window
+
+
 ## Schritt 3: Herunterladen des Projekts von Github
 
 Klonen Sie das Repository von Github auf Ihren Computer, falls dies noch nicht geschehen ist. Dies kann entweder über die Github-Desktop-App oder über die Befehlszeile erfolgen.
