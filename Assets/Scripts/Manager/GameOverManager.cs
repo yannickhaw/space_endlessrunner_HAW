@@ -6,6 +6,7 @@ public class GameOverManager : MonoBehaviour
 {
     public static bool gameOver;            // Statische Variable, die den Spielzustand speichert (ob das Spiel vorbei ist oder nicht)
     public GameObject gameOverPanel;        // GameObject des Game Over-Panels (Game Over Screen (UI) nach Tod des Spielers)
+    public GameObject pauseButton;
     public GameObject scoreBackground;      // GameObject des Hintergrunds für die Score-Anzeige (UI)
 
     public GameObject ScoreText;            // GameObject für den Score-Text (UI)
@@ -22,6 +23,8 @@ public class GameOverManager : MonoBehaviour
         {
             Time.timeScale = 1;                 // Setzt die Zeit auf normal (um sicherzustellen, dass das Spiel in normaler Geschwindigkeit fortgesetzt wird)
             gameOverPanel.SetActive(true);      // Aktiviert das Game Over-Panel, um es anzuzeigen (UI)
+
+            pauseButton.SetActive(false);
             
             //Deaktiviert die Score-Anzeige (UI) oben links
             scoreBackground.SetActive(false);  
